@@ -1,17 +1,16 @@
-import { useState } from "react";
 import SinglePost from "./SinglePost";
 import Pagination from "../navigation/Pagination";
 
 function FullContent(props) {
   const contextData = props.contentData;
 
-  const [blogPosts, setBlogPosts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(3);
+  // const [blogPosts, setBlogPosts] = useState([]);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [postsPerPage] = useState(3);
 
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = blogPosts.slice(indexOfFirstPost, indexOfLastPost);
+  // const indexOfLastPost = currentPage * postsPerPage;
+  // const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  // const currentPosts = blogPosts.slice(indexOfFirstPost, indexOfLastPost);
 
   return (
     <div className="container mx-auto my-12 lg:mt-0">
