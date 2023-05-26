@@ -14,19 +14,35 @@ export function useFetchContent(specifiedId = null) {
 
   const getData = async () => {
     try {
-      const request = client.getEntries({ 
+      const request = client.getEntries({
         content_type: "contents",
-        "sys.id": specifiedId ? specifiedId : undefined,        
+        "sys.id": specifiedId ? specifiedId : undefined,
       });
-
 
       const response = await request;
       const contents = response.items.map((item) => {
-        const { title, author, dateOfCreation, subTitle, categories, image } =
-          item.fields;
+        const {
+          title,
+          author,
+          dateOfCreation,
+          subTitle,
+          categories,
+          image,
+          content,
+        } = item.fields;
         const id = item.sys.id;
         const img = image?.fields?.file?.url;
-        return { title, author, dateOfCreation, subTitle, categories, img, id };
+console.log(content);
+        return {
+          title,
+          author,
+          dateOfCreation,
+          subTitle,
+          categories,
+          img,
+          id,
+          content,
+        };
       });
 
       setLoading(false);

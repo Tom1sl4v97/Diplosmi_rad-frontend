@@ -77,7 +77,7 @@ function MainNavigation() {
       </div>
 
       {menuOpen && (
-        <div id="menu" className="flex p-6 mt-8 rounded-full bg-darkViolet">
+        <div id="menu" className="flex p-6 mt-8 rounded-tl-[120px] rounded-br-[80px] rounded-tr-[40px] rounded-bl-[60px] bg-darkViolet">
           <div className="flex flex-col items-center justify-center w-full space-y-6 font-bold text-white rounded-sm">
             {dioNavigacije}
             {dijeloviLoginNavigacije}

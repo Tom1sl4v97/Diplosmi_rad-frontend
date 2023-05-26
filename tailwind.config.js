@@ -14,6 +14,7 @@ module.exports = {
 
     "./src/components/detailPage/Title.js",
     "./src/components/detailPage/Image.js",
+    "./src/components/detailPage/Content.js",
 
     "./src/components/pomocno/LoadingCom.js",
   ],

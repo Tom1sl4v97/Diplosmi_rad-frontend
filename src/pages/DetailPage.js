@@ -4,6 +4,7 @@ import { useFetchContent } from "../hooks/fetchContent";
 import LoadingCom from "../components/pomocno/LoadingCom";
 import Title from "../components/detailPage/Title";
 import Image from "../components/detailPage/Image";
+import Content from "../components/detailPage/Content";
 
 function DetailPage() {
   const postID = useParams();
@@ -21,6 +22,7 @@ function DetailPage() {
             dateOfCreation={data[0].dateOfCreation}
           />
           <Image img={data[0].img} subTitle={data[0].subTitle} />
+          <Content content={data[0].content} />
         </>
       )}
     </>
