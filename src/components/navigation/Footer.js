@@ -9,42 +9,20 @@ function Footer() {
           <div className="flex flex-col items-center w-full md:items-start">
             <div className="mb-5 font-bold text-white capitalize">Features</div>
             <div className="flex flex-col items-center space-y-3 md:items-start">
-              <a
-                href="#"
-                className="capitalize text-grayishViolet hover:text-cyan"
-              >
+              <p className="capitalize text-grayishViolet hover:text-cyan">
                 Nesto
-              </a>
-              <a
-                href="#"
-                className="capitalize text-grayishViolet hover:text-cyan"
-              >
+              </p>
+              <p className="capitalize text-grayishViolet hover:text-cyan">
                 Nešto drugo
-              </a>
-              <a
-                href="#"
-                className="capitalize text-grayishViolet hover:text-cyan"
-              >
+              </p>
+              <p className="capitalize text-grayishViolet hover:text-cyan">
                 Još nešto
-              </a>
+              </p>
             </div>
           </div>
         </div>
 
-        <div className="flex space-x-6">
-          <a href="#">
-            <img src="images/icon-facebook.svg" alt="" className="ficon" />
-          </a>
-          <a href="#">
-            <img src="images/icon-twitter.svg" alt="" className="ficon" />
-          </a>
-          <a href="#">
-            <img src="images/icon-pinterest.svg" alt="" className="ficon" />
-          </a>
-          <a href="#">
-            <img src="images/icon-instagram.svg" alt="" className="ficon" />
-          </a>
-        </div>
+        <div className="flex space-x-6"></div>
       </div>
     </footer>
   );

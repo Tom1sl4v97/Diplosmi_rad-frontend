@@ -1,14 +1,10 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
-import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 function Content(props) {
   const contentData = props.content;
-
-  const Bold = ({ children }) => <span className="font-bold">{children}</span>;
 
   const H1 = ({ children }) => (
     <h1 className="text-3xl lg:text-5xl mb-10">{children}</h1>
@@ -30,7 +26,7 @@ function Content(props) {
   );
 
   const Text = ({ children }) => (
-    <div className="text-justify mb-4">{children}</div>
+    <div className="text-justify mb-4 text-lg">{children}</div>
   );
 
   const Blockquote = ({ children }) => (
@@ -61,6 +57,7 @@ function Content(props) {
     <a
       className="text-blue-500 hover:underline"
       href={node.data.uri}
+      rel="noreferrer"
       target="_blank"
     >
       {node.content[0].value}
@@ -76,7 +73,7 @@ function Content(props) {
       switch (mimeGroup) {
         case "image":
           return (
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center mb-8">
               <div className="container max-w-screen-lg mx-auto pb-4 flex justify-center">
                 <img
                   alt={title}
@@ -87,8 +84,20 @@ function Content(props) {
               <p className="font-bold text-lg">{description}</p>
             </div>
           );
-        case "application":
-          return <a alt={description} />;
+        case "video":
+          return (
+            <div className="aspect-video m-12">
+              <iframe
+                title="video"
+                className="w-full h-full"
+                src={file.url}
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen="true"
+              />
+            </div>
+          );
+
         default:
           return (
             <span style={{ backgroundColor: "red", color: "white" }}>
@@ -144,6 +153,7 @@ function Content(props) {
                   </tr>
                 );
               }
+              return;
             })}
           </tbody>
         </table>
@@ -151,19 +161,8 @@ function Content(props) {
     );
   };
 
-  //   if (children.every((child) => node.nodeType === BLOCKS.TABLE_HEADER_CELL)) {
-  //     return (
-  //       <thead>
-  //         <tr>{children}</tr>
-  //       </thead>
-  //     );
-  //   } else {
-  //     return <tr>{children}</tr>;
-  //   }
-  // };
   const options = {
     renderMark: {
-      [MARKS.BOL_LISTD]: (text) => <Bold>{text}</Bold>,
       [MARKS.CODE]: (text) => <TextCode>{text}</TextCode>,
     },
 
