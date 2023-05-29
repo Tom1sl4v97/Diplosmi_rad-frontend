@@ -15,7 +15,7 @@
   background-color: white;
 }
 
-
+// Detail page for image styling
 
 .center-wrapper {
   position: fixed;
@@ -82,8 +82,7 @@
   }
 }
 
-
-
+// Humbuger Menu
 
 .hamburger {
   cursor: pointer;
