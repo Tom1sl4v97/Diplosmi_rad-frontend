@@ -32,7 +32,6 @@ export function useFetchContent(specifiedId = null) {
         } = item.fields;
         const id = item.sys.id;
         const img = image?.fields?.file?.url;
-console.log(content);
         return {
           title,
           author,

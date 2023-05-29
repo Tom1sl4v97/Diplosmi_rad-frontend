@@ -8,7 +8,7 @@ import Content from "../components/detailPage/Content";
 
 function DetailPage() {
   const postID = useParams();
-  const { loadingData, data = data, error } = useFetchContent(postID.postID);
+  const { loadingData, data } = useFetchContent(postID.postID);
 
   return (
     <>

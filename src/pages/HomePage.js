@@ -6,7 +6,7 @@ import LoadingCom from "../components/pomocno/LoadingCom";
 import FullContent from "../components/homepage/FullContent";
 
 function HomePage() {
-  const { loadingData, data, error } = useFetchContent();
+  const { loadingData, data } = useFetchContent();
 
   if (!loadingData) {
     var najnovijiDatum = new Date(
@@ -19,7 +19,7 @@ function HomePage() {
     );
     var najnovijiPostovi = data.filter((e) => {
       var d = new Date(e.dateOfCreation);
-      return d.getTime() == najnovijiDatum.getTime();
+      return d.getTime() === najnovijiDatum.getTime();
     })[0];
   }
 
