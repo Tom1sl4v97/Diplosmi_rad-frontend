@@ -2,9 +2,15 @@ import { format } from "date-fns";
 import PrikazKategorija from "./PrikazKategorija";
 import { Link } from "react-router-dom";
 
+import { useRef } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
+
 function SinglePost(props) {
   const { img, author, dateOfCreation, title, subTitle, categories } =
     props.item;
+
+  const ref = useRef(); // We will use React useRef hook to reference the wrapping div:
+  const { events } = useDraggable(ref);
 
   return (
     <Link to={`detailPage/${props.item.id}`}>
@@ -20,6 +26,8 @@ function SinglePost(props) {
             <div
               id="categories"
               className="flex cursor-grab overflow-hidden text-sm"
+              {...events}
+              ref={ref}
             >
               {categories.map((category, index) => (
                 <PrikazKategorija

@@ -30,7 +30,7 @@ function Content(props) {
   );
 
   const Blockquote = ({ children }) => (
-    <blockquote className="border-l-4 border-gray-500 italic my-8 pl-8 md:pl-12 ml-2 lg:ml-4">
+    <blockquote className="border-l-4 border-cyan italic my-8 pl-8 md:pl-12 ml-2 lg:ml-4">
       {children}
     </blockquote>
   );
@@ -64,8 +64,12 @@ function Content(props) {
     </a>
   );
 
-  const Assets = ({ node }) => {
-    {
+  const HR = () => (
+    <hr className="my-8 mx-12 border-1 border-cyan shadow-xl rounded-lg" />
+  );
+
+  const AssetsHandler = (node) => {
+    
       const { title, description, file } = node.data.target.fields;
       const mimeType = file.contentType;
       const mimeGroup = mimeType.split("/")[0];
@@ -105,19 +109,16 @@ function Content(props) {
               {mimeType} embedded asset{" "}
             </span>
           );
-      }
     }
-  };
+  }
 
-  const HR = () => (
-    <hr className="my-8 mx-12 border-1 border-cyan shadow-xl rounded-lg" />
-  );
+  const Assets = ({ node }) => AssetsHandler(node);
 
   const Table = ({ node, children }) => {
     return (
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg mb-8">
         <table className="w-full text-base text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-base font-bold text-gray-700 uppercase bg-cyanLight dark:bg-gray-700 dark:text-gray-400">
+          <thead className="text-base font-bold text-cyan uppercase bg-cyanLight dark:bg-gray-700 dark:text-gray-400">
             <tr>
               {children[0].props.children.map((item, index) => {
                 return (
@@ -153,7 +154,7 @@ function Content(props) {
                   </tr>
                 );
               }
-              return;
+              return null;
             })}
           </tbody>
         </table>

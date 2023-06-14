@@ -15,7 +15,7 @@ function DetailPage() {
       {loadingData ? (
         <LoadingCom />
       ) : (
-        <>
+        <div className="mx-28">
           <Title
             title={data[0].title}
             author={data[0].author}
@@ -23,7 +23,7 @@ function DetailPage() {
           />
           <Image img={data[0].img} subTitle={data[0].subTitle} />
           <Content content={data[0].content} />
-        </>
+        </div>
       )}
     </>
   );

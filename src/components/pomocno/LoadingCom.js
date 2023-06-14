@@ -1,6 +1,6 @@
 function LoadingCom() {
   return (
-    <div className="text-center">
+    <div className="text-center m-32">
       <div role="status">
         <svg
           aria-hidden="true"

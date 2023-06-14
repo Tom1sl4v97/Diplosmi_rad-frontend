@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
+    './src/**/*.{js,jsx}',
     "./src/components/navigation/MainNavigation.js",
     "./src/components/navigation/Pagination.js",
     "./src/components/navigation/Footer.js",
@@ -12,6 +13,8 @@ module.exports = {
     "./src/components/homepage/FullContent.js",
     "./src/components/homepage/SinglePost.js",
 
+
+    "./src/pages/DetailPage.js",
     "./src/components/detailPage/Title.js",
     "./src/components/detailPage/Image.js",
     "./src/components/detailPage/Content.js",

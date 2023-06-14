@@ -5,6 +5,8 @@ import HomePage from "./pages/HomePage";
 import DrugaStranica from "./pages/DrugaStranica";
 import DetailPage from "./pages/DetailPage";
 
+import "./app.css";
+
 const router = createBrowserRouter([
   {
     path: "/",
