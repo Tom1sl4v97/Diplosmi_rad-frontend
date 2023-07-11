@@ -4,6 +4,7 @@ import RootLayout from "./pages/Root";
 import HomePage from "./pages/HomePage";
 import DrugaStranica from "./pages/DrugaStranica";
 import DetailPage from "./pages/DetailPage";
+import LoginPage from "./pages/LoginPage";
 
 import "./app.css";
 
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
         path: "detailPage/:postID",
         element: <DetailPage />,
       },
+      {
+        path: "login",
+        element: <LoginPage /> 
+      }
     ],
   },
 ]);

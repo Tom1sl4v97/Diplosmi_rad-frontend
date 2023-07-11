@@ -15,7 +15,7 @@ function DetailPage() {
       {loadingData ? (
         <LoadingCom />
       ) : (
-        <div className="mx-28">
+        <div className="mx-6 md:mx-8 lg:mx-20 xl:mx-28">
           <Title
             title={data[0].title}
             author={data[0].author}

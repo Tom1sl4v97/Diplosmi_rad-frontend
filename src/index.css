@@ -2,6 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Alata&family=Josefin+Sans:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap");
 
+.loginBackground {
+  background-image: url("./assets/images/background_login.avif");
+}
+
 .scrollable {
   overflow-x: scroll;
 }

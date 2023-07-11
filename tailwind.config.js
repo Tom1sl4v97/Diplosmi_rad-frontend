@@ -13,6 +13,8 @@ module.exports = {
     "./src/components/homepage/FullContent.js",
     "./src/components/homepage/SinglePost.js",
 
+    "./src/components/loginPage/login.js",
+
 
     "./src/pages/DetailPage.js",
     "./src/components/detailPage/Title.js",

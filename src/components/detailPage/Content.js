@@ -190,7 +190,7 @@ function Content(props) {
   };
 
   return (
-    <div className="m-16">
+    <div className="md:m-16">
       {documentToReactComponents(contentData, options)}
     </div>
   );

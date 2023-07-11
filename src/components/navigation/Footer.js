@@ -1,4 +1,5 @@
 import logo from "../../assets/images/logo.png";
+
 function Footer() {
   return (
     <footer className="py-16 bg-veryDarkViolet rounded-t-3xl">
