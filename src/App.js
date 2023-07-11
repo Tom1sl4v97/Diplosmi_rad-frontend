@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import DrugaStranica from "./pages/DrugaStranica";
 import DetailPage from "./pages/DetailPage";
 import LoginPage from "./pages/LoginPage";
+import RegistrationPage from "./pages/RegistrationPage";
 
 import "./app.css";
 
@@ -28,7 +29,11 @@ const router = createBrowserRouter([
       },
       {
         path: "login",
-        element: <LoginPage /> 
+        element: <LoginPage />
+      },
+      {
+        path: "registration",
+        element: <RegistrationPage />
       }
     ],
   },

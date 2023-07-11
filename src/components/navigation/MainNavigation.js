@@ -45,7 +45,7 @@ function MainNavigation() {
       <NavLink to="/login" className={stilovi}>
         {text("login")}
       </NavLink>
-      <NavLink to="/register" className={aktivniStilovi}>
+      <NavLink to="/registration" className={aktivniStilovi}>
         {text("signup")}
       </NavLink>
     </>

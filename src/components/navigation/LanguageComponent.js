@@ -1,4 +1,3 @@
-import { te } from "date-fns/locale";
 import { useTranslation } from "react-i18next";
 
 function LanguageComponent(props) {
@@ -20,9 +19,9 @@ function LanguageComponent(props) {
                 {lngs.map((lng, i) => {
                     const { code, native, link } = lng;
                     return (
-                        <button onClick={() => handleTrans(code)} class="p-2 flex flex-row items-center text-sm font-medium text-gray-700 hover:bg-gray-100">
+                        <button key={i} onClick={() => handleTrans(code)} className="p-2 flex flex-row items-center text-sm font-medium text-gray-700 hover:bg-gray-100">
                             <span className="text-md">{native}</span>
-                            <span className="ml-1"> <img src={link} class="w-5 h-5" /></span>
+                            <span className="ml-1"> <img src={link} className="w-5 h-5" /></span>
                         </button>)
                 })}
             </div >
