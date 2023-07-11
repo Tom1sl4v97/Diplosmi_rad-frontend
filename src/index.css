@@ -4,6 +4,7 @@
 
 .loginBackground {
   background-image: url("./assets/images/background_login.avif");
+  border-radius: 120px;
 }
 
 .scrollable {

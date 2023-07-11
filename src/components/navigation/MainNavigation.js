@@ -2,6 +2,9 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import LanguageComponent from "./LanguageComponent";
+
+
 import logo from "../../assets/images/logo.png";
 
 function MainNavigation() {
@@ -12,7 +15,7 @@ function MainNavigation() {
   const stilovi =
     "font-bold text-grayishViolet hover:text-veryDarkViolet no-underline";
   const aktivniStilovi =
-    "px-8 py-3 font-bold text-white bg-cyan rounded-full hover:opacity-70 no-underline";
+    "px-4 py-2 font-bold text-white bg-cyan rounded-full hover:opacity-70 no-underline";
 
   const dioNavigacije = (
     <>
@@ -53,8 +56,8 @@ function MainNavigation() {
   };
 
   return (
-    <>
-      <nav className="relative container mx-auto p-6 text-2xl">
+    <div className="flex-row">
+      <nav className="relative container mx-auto p-6 text-xl">
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-20">
             <img src={logo} alt="" className="h-10" />
@@ -88,7 +91,14 @@ function MainNavigation() {
           </div>
         )}
       </nav>
-    </>
+
+      <div className="flex justify-between pr-4">
+        <div className="md:px-12 lg:px-16 xl:px-20 w-full">
+          <LanguageComponent />
+        </div>
+      </div>
+
+    </div>
   );
 }
 
