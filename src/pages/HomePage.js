@@ -5,8 +5,13 @@ import HomePagePrvaSlika from "../components/homepage/PrvaSlika";
 import LoadingCom from "../components/pomocno/LoadingCom";
 import FullContent from "../components/homepage/FullContent";
 
-function HomePage() {
+function HomePage(props) {
   const { loadingData, data } = useFetchContent();
+
+  if (props && props.location) {
+    let userData = props.location.state;
+    console.log("UserData nakon login-a: " + userData);
+  }
 
   if (!loadingData) {
     var najnovijiDatum = new Date(

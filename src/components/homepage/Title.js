@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 function HomePageTitle() {
 
-  const { t: text, i18n } = useTranslation();
+  const { t: text } = useTranslation();
 
   return (
     <section id="hero">

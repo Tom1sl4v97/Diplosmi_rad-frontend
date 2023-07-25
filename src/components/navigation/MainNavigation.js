@@ -1,16 +1,68 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useSessionStorage } from "../../hooks/SessionStorage";
+import { auth } from "../../config/Firebase";
+import { signOut } from "firebase/auth";
+import { Fragment } from "react";
+import { Menu, Transition } from "@headlessui/react";
+import { useSelector } from "react-redux";
 
 import LanguageComponent from "./LanguageComponent";
-
-
 import logo from "../../assets/images/logo.png";
 
-function MainNavigation() {
-  const [menuOpen, setMenuOpen] = useState(false);
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 
-  const { t: text, i18n } = useTranslation();
+function MainNavigation() {
+  const [userData, setUserData] = useSessionStorage(
+    "userData",
+    {
+      role: "un-register",
+      user: {
+        username: null,
+        email: null,
+        image: null,
+      },
+      tokenKey: null,
+    }
+  );
+  const sessionData = useSelector((state) => state.auth);
+
+  if (sessionData.isAuthenticated) {
+    window.location.reload();
+  }
+
+  const isActive = userData.role !== "un-register";
+  const user = userData.user;
+  const userImage =
+    user.image !== null
+      ? user.image
+      : "https://img.icons8.com/?size=512&id=118243&format=png";
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { t: text } = useTranslation();
+
+  const logoutHandler = async () => {
+    console.log("Logout");
+
+    setUserData({
+      role: "un-register",
+      user: {
+        username: null,
+        email: null,
+        image: null,
+      },
+      tokenKey: null,
+    });
+
+    try {
+      await signOut(auth);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const stilovi =
     "font-bold text-grayishViolet hover:text-veryDarkViolet no-underline";
@@ -26,7 +78,7 @@ function MainNavigation() {
         {text("homepage")}
       </NavLink>
       <NavLink
-        to="/drugaStranica"
+        to="/AboutPage"
         className={({ isActive }) => (isActive ? aktivniStilovi : stilovi)}
       >
         {text("about")}
@@ -51,6 +103,88 @@ function MainNavigation() {
     </>
   );
 
+  const dijeloviUlogiranogKorisnika = (
+    <>
+      <div className="inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        {/* Profile dropdown */}
+        <Menu as="div" className="relative ml-3">
+          <div>
+            <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+              <img
+                className="h-12 w-12 rounded-full"
+                src={userImage}
+                alt={user.username}
+              />
+              <div className="lg:hidden font-bold text-white pl-2 pr-6 py-3 text-lg">
+                {text("userMenuOpenProfile")}
+              </div>
+            </Menu.Button>
+          </div>
+          <Transition
+            as={Fragment}
+            enter="transition ease-out duration-100"
+            enterFrom="transform opacity-0 scale-95"
+            enterTo="transform opacity-100 scale-100"
+            leave="transition ease-in duration-75"
+            leaveFrom="transform opacity-100 scale-100"
+            leaveTo="transform opacity-0 scale-95"
+          >
+            <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <div className="px-4 py-3">
+                <span className="block text-sm text-gray-900">
+                  {user.username}
+                </span>
+                <span className="block text-sm  text-gray-500 truncate dark:text-gray-400">
+                  {user.email}
+                </span>
+              </div>
+              <Menu.Item>
+                {({ active }) => (
+                  <a
+                    href="#"
+                    className={classNames(
+                      active ? "bg-gray-100" : "",
+                      "block px-4 py-2 text-sm text-gray-700"
+                    )}
+                  >
+                    {text("userMenuYourProfile")}
+                  </a>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <a
+                    href="#"
+                    className={classNames(
+                      active ? "bg-gray-100" : "",
+                      "block px-4 py-2 text-sm text-gray-700"
+                    )}
+                  >
+                    {text("userMenuSettings")}
+                  </a>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <a
+                    href="#"
+                    onClick={logoutHandler}
+                    className={classNames(
+                      active ? "bg-gray-100" : "",
+                      "block px-4 py-2 text-sm text-gray-700"
+                    )}
+                  >
+                    {text("userMenuLogout")}
+                  </a>
+                )}
+              </Menu.Item>
+            </Menu.Items>
+          </Transition>
+        </Menu>
+      </div>
+    </>
+  );
+
   const toggleMenuHandler = () => {
     setMenuOpen((prevState) => !prevState);
   };
@@ -67,12 +201,15 @@ function MainNavigation() {
           </div>
 
           <div className="hidden items-center space-x-6 lg:flex">
-            {dijeloviLoginNavigacije}
+            {isActive ? dijeloviUlogiranogKorisnika : dijeloviLoginNavigacije}
           </div>
 
           <button
             id="menu-btn"
-            className={(menuOpen ? "open " : "") + "flex flex-col items-center hamburger lg:hidden focus:outline-none h-7"}
+            className={
+              (menuOpen ? "open " : "") +
+              "flex flex-col items-center hamburger lg:hidden focus:outline-none h-7"
+            }
             type="button"
             onClick={toggleMenuHandler}
           >
@@ -83,10 +220,14 @@ function MainNavigation() {
         </div>
 
         {menuOpen && (
-          <div id="menu" className="flex p-6 mt-8 rounded-tl-[120px] rounded-br-[80px] rounded-tr-[40px] rounded-bl-[60px] bg-darkViolet">
+          <div
+            id="menu"
+            className="flex p-6 mt-8 rounded-tl-[120px] rounded-br-[80px] rounded-tr-[40px] rounded-bl-[60px] bg-darkViolet"
+          >
             <div className="flex flex-col items-center justify-center w-full space-y-6 font-bold text-white rounded-sm">
               {dioNavigacije}
-              {dijeloviLoginNavigacije}
+              {!isActive && dijeloviLoginNavigacije}
+              {isActive && dijeloviUlogiranogKorisnika}
             </div>
           </div>
         )}
@@ -97,7 +238,6 @@ function MainNavigation() {
           <LanguageComponent />
         </div>
       </div>
-
     </div>
   );
 }

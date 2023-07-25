@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { createClient } from "contentful";
+import { useSessionStorage } from "../hooks/SessionStorage";
 
 const client = createClient({
   space: "3587efa5a65l",
@@ -11,10 +12,15 @@ export function useFetchContent(specifiedId = null) {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
+  const [languageStorage, setLanguageStorage] = useSessionStorage(
+    "language",
+    "en-US"
+  );
 
   const getData = async () => {
     try {
       const request = client.getEntries({
+        locale: languageStorage,
         content_type: "contents",
         "sys.id": specifiedId ? specifiedId : undefined,
       });

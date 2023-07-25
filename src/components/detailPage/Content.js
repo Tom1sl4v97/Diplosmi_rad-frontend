@@ -69,48 +69,48 @@ function Content(props) {
   );
 
   const AssetsHandler = (node) => {
-    
-      const { title, description, file } = node.data.target.fields;
-      const mimeType = file.contentType;
-      const mimeGroup = mimeType.split("/")[0];
+    console.log("node", node);
+    const { title, description, file } = node.data.target.fields;
+    const mimeType = file.contentType;
+    const mimeGroup = mimeType.split("/")[0];
 
-      switch (mimeGroup) {
-        case "image":
-          return (
-            <div className="flex flex-col items-center mb-8">
-              <div className="container max-w-screen-lg mx-auto pb-4 flex justify-center">
-                <img
-                  alt={title}
-                  src={file.url}
-                  className="mix-blend-color-burn"
-                />
-              </div>
-              <p className="font-bold text-lg">{description}</p>
-            </div>
-          );
-        case "video":
-          return (
-            <div className="aspect-video m-12">
-              <iframe
-                title="video"
-                className="w-full h-full"
-                src={file.url}
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen="true"
+    switch (mimeGroup) {
+      case "image":
+        return (
+          <div className="flex flex-col items-center mb-8">
+            <div className="container max-w-screen-lg mx-auto pb-4 flex justify-center">
+              <img
+                alt={title}
+                src="https://images.ctfassets.net/3587efa5a65l/72Q5L6EpOkhoLq8uKZRXUI/5f556fa898234efa189eb2f04bfc896a/pixel3xl.jpg"
+                className="mix-blend-color-burn"
               />
             </div>
-          );
+            <p className="font-bold text-lg">{description}</p>
+          </div>
+        );
+      case "video":
+        return (
+          <div className="aspect-video m-12">
+            <iframe
+              title="video"
+              className="w-full h-full"
+              src={file.url}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen={true}
+            />
+          </div>
+        );
 
-        default:
-          return (
-            <span style={{ backgroundColor: "red", color: "white" }}>
-              {" "}
-              {mimeType} embedded asset{" "}
-            </span>
-          );
+      default:
+        return (
+          <span style={{ backgroundColor: "red", color: "white" }}>
+            {" "}
+            {mimeType} embedded asset{" "}
+          </span>
+        );
     }
-  }
+  };
 
   const Assets = ({ node }) => AssetsHandler(node);
 

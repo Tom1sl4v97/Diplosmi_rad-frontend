@@ -5,9 +5,10 @@ import classes from "./Root.module.css";
 import Footer from "../components/navigation/Footer";
 
 function RootLayout() {
+
   return (
     <div className={classes["main-container"]}>
-      <MainNavigation />
+      <MainNavigation/>
       <Outlet />
       <Footer />
     </div>

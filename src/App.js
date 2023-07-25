@@ -2,10 +2,11 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import RootLayout from "./pages/Root";
 import HomePage from "./pages/HomePage";
-import DrugaStranica from "./pages/DrugaStranica";
+import AboutPage from "./pages/AboutPage";
 import DetailPage from "./pages/DetailPage";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
+import PageNotFound from "./pages/PageNotFound";
 
 import "./app.css";
 
@@ -13,15 +14,15 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    //errorElement: <ErrorLayout />, TODO: Add ErrorLayout
+    errorElement: <PageNotFound />,
     children: [
       {
         index: true,
         element: <HomePage />,
       },
       {
-        path: "drugaStranica",
-        element: <DrugaStranica />,
+        path: "AboutPage",
+        element: <AboutPage />,
       },
       {
         path: "detailPage/:postID",
@@ -29,12 +30,12 @@ const router = createBrowserRouter([
       },
       {
         path: "login",
-        element: <LoginPage />
+        element: <LoginPage />,
       },
       {
         path: "registration",
-        element: <RegistrationPage />
-      }
+        element: <RegistrationPage />,
+      },
     ],
   },
 ]);

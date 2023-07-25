@@ -1,68 +1,33 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import detector from "i18next-browser-languagedetector";
+
+import translationEN from "./config/language/translationEN.json";
+import translationCRO from "./config/language/translationCRO.json";
+import translationDE from "./config/language/translationDE.json";
+
+const resources = {
+  "en-US": {
+    translation: translationEN,
+  },
+  hr: {
+    translation: translationCRO,
+  },
+  de: {
+    translation: translationDE,
+  },
+};
 
 i18n
-    .use(initReactI18next)
-    .init({
-        debug: true,
-        fallbackLng: 'en',
-        interpolation: {
-            escapeValue: false, // not needed for react as it escapes by default
-        },
-        // language resources
-        resources: {
-            en: {
-                translation: {
-                    homePageTitle: "World in the Clouds",
-                    homePageSubTitle: "Blog that brings you the latest news from the world of technology.",
-                    login: "Login",
-                    loginLabel: "Enter your login details",
-                    registrationLabel : "Enter your registration details",
-                    loginPassword: "Password",
-                    logout: "Logout",
-                    signup: "Sign Up",
-                    homepage: "Homepage",
-                    about: "About",
-                    en: "English",
-                    cro: "Croatian",
-                    de: "German",
-                }
-            },
-            cro: {
-                translation: {
-                    homePageTitle: "Sviijet u Oblacima",
-                    homePageSubTitle: "Blog koji Vam dostavlja najnovije vijesti iz svijeta tehnologije.",
-                    login: "Prijava",
-                    loginLabel: "Unesite svoje podatke za prijavu",
-                    registrationLabel : "Unesite svoje podatke za registraciju",
-                    loginPassword: "Lozinka",
-                    logout: "Odjava",
-                    signup: "Registracija",
-                    homepage: "Početna",
-                    about: "O nama",
-                    en: "Engleski",
-                    cro: "Hrvatski",
-                    de: "Njemački",
-                }
-            },
-            de: {
-                translation: {
-                    homePageTitle: "Welt in den Wolken",
-                    homePageSubTitle: "Blog, der Ihnen die neuesten Nachrichten aus der Welt der Technologie bringt.",
-                    login: "Anmeldung",
-                    loginLabel: "Geben Sie Ihre Anmeldeinformationen ein",
-                    registrationLabel : "Geben Sie Ihre Registrierungsdaten ein",
-                    loginPassword: "Passwort",
-                    logout: "Ausloggen",
-                    signup: "Anmelden",
-                    homepage: "Startseite",
-                    about: "Über",
-                    en: "Englisch",
-                    cro: "Kroatisch",
-                    de: "Deutsch",
-                }
-            },
-        }
-    });
+  .use(initReactI18next)
+  .use(detector)
+  .init({
+    debug: false,
+    fallbackLng: "en",
+    interpolation: {
+      escapeValue: false,
+    },
+    resources,
+  });
 
 export default i18n;
