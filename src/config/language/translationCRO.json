@@ -43,6 +43,7 @@
   "userRegistrationConfirmPasswordIsEmpty": "Nije unesena potvrda lozinke",
   "userRegistrationPasswordsDoNotMatch": "Lozinke se ne podudaraju",
   "userRegistrationPasswordIsWeak": "Lozinka je prekratka",
+  "userRegistrationError": "Greška prilikom registracije",
 
   "blogMissionTitle": "Naša misija",
   "blogMissionText": "Naša misija je pružiti Vam najnovije vijesti iz svijeta tehnologije koje će Vas:",
@@ -62,5 +63,7 @@
 
   "error404Title": "Greška 404",
   "error404Text": "Stranica koju tražite ne postoji.",
-  "error404GoToHomepage": "Idi na početnu stranicu"
+  "error404GoToHomepage": "Idi na početnu stranicu",
+  "users": "Korisniče",
+  "settings": "postavke"
 }

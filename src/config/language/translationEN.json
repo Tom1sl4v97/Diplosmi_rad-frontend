@@ -43,6 +43,7 @@
   "userRegistrationPasswordConfirmIsEmtpy": "Password confirm is empty",
   "userRegistrationPasswordsDoNotMatch": "Passwords do not match",
   "userRegistrationPasswordIsWeak": "Password is weak",
+  "userRegistrationError": "Unknown error occurred while registering",
 
   "blogMissionTitle": "Our mission",
   "blogMissionText": "Our mission is to provide you with the latest news from the world of technology that will:",
@@ -62,5 +63,8 @@
 
   "error404Title": "Error 404",
   "error404Text": "Page not found",
-  "error404GoToHomepage": "Go to homepage"
+  "error404GoToHomepage": "Go to homepage",
+
+  "users": "User",
+  "settings": "settings"
 }

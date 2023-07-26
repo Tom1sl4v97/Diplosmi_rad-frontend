@@ -6,11 +6,14 @@ import { useEffect, useState } from "react";
 import { useSessionStorage, defaultSession } from "../../hooks/SessionStorage";
 import { useDispatch } from "react-redux";
 import { authActions } from "../../store/Auth";
+import Datepicker from "react-tailwindcss-datepicker";
 
 import Title from "./Title";
 import InputField from "./InputField";
 import SubmitButton from "./SubmitButton";
 import useInput from "../../hooks/use-input";
+
+const serverURL = "http://localhost:5050/api";
 
 function Registration() {
   const { t: text } = useTranslation();
@@ -20,8 +23,13 @@ function Registration() {
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [birthDate, setBirthDate] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
+
+  const [birthDate, setBirthDate] = useState(null);
+
+  const handleValueChange = (newValue) => {
+    setBirthDate(newValue);
+  };
 
   const {
     value: enteredEmail,
@@ -94,10 +102,6 @@ function Registration() {
     setLastName(event.target.value);
   };
 
-  const onChangeBirthDateHandler = (event) => {
-    setBirthDate(event.target.value);
-  };
-
   const onChangeMobileNumberHandler = (event) => {
     setMobileNumber(event.target.value);
   };
@@ -140,14 +144,31 @@ function Registration() {
 
   const successfullRegistration = async (userData) => {
     const user = {
-      username: userData.user.displayName,
-      email: userData.user.email,
-      image: "https://img.icons8.com/?size=512&id=0lg0kb05hrOz&format=png",
+      userName: enteredUsername,
+      email: enteredEmail,
+      image: null,
+      firstName: firstName,
+      lastName: lastName,
+      birthDate: birthDate,
+      phoneNumber: mobileNumber,
     };
-
     const token = await userData.user.getIdToken();
 
-    
+    try {
+      await createNewUserInDB(user, token);
+    } catch (error) {
+      setError([error.message]);
+      return;
+    }
+
+    setUserSession({
+      role: "user",
+      user: user,
+      tokenKey: token,
+      dateTimeStamp: new Date().getTime(),
+    });
+    dispatch(authActions.login());
+
     resetEmailInput();
     resetUsernameInput();
     resetPasswordInput();
@@ -156,39 +177,55 @@ function Registration() {
     setLastName("");
     setBirthDate("");
     setMobileNumber("");
-    
-    setUserSession({
-      role: "user",
-      user: user,
-      tokenKey: token,
-      dateTimeStamp: new Date().getTime(),
-    });
-    dispatch(authActions.login());
+    setError(null);
   };
+
+  async function createNewUserInDB(userData, token) {
+    const serverUrl = serverURL + "/users";
+
+    let headers = new Headers();
+    headers.append("Authorization", "Bearer " + token);
+    headers.append("Content-Type", "application/json");
+
+    try {
+      const response = await fetch(serverUrl, {
+        method: "POST",
+        body: JSON.stringify(userData),
+        headers: headers,
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to register user");
+      }
+    } catch (error) {
+      throw new Error("Failed to connect to the server");
+    }
+  }
 
   const validateUserInputs = () => {
     var errorList = [];
     var validation = false;
+
     if (enteredEmail === "") {
       errorList.push(text("userRegistrationEmailIsEmtpy"));
       validation = true;
     }
 
-    if (enteredEmailIsValid){
+    if (!enteredEmailIsValid) {
       errorList.push(text("userRegistrationEmailIsInvalid"));
       validation = true;
     }
 
-    if (enteredUsername === "" || enteredUsernameIsValid) {
+    if (enteredUsername === "" || !enteredUsernameIsValid) {
       errorList.push(text("userRegistrationUsernameIsEmpty"));
       validation = true;
     }
 
-    if (enteredPassword === "" || enteredPasswordIsValid) {
+    if (enteredPassword === "" || !enteredPasswordIsValid) {
       errorList.push(text("userRegistrationPasswordIsEmtpy"));
       validation = true;
     }
-    if (enteredConfirmPassword === "" || enteredConfirmPasswordIsValid) {
+    if (enteredConfirmPassword === "" || !enteredConfirmPasswordIsValid) {
       errorList.push(text("userRegistrationPasswordConfirmIsEmtpy"));
       validation = true;
     }
@@ -229,9 +266,8 @@ function Registration() {
 
             {error && (
               <div className="text-red-500 text-center text-lightRed">
-                {Array.isArray(error) && error.map((err, index) => (
-                  <p key={index}>{err}</p>
-                ))}
+                {Array.isArray(error) &&
+                  error.map((err, index) => <p key={index}>{err}</p>)}
                 <br />
               </div>
             )}
@@ -295,12 +331,16 @@ function Registration() {
                 onChange={onChangeLastNameHandler}
               />
 
-              <InputField
-                type="text"
-                name="birthDate"
+              <Datepicker
+                displayFormat="DD.MM.YYYY"
                 placeholder={text("signupBirthDate")}
-                onChange={onChangeBirthDateHandler}
+                useRange={false}
+                asSingle={true}
+                value={birthDate}
+                onChange={handleValueChange}
               />
+
+              <br />
 
               <InputField
                 type="text"

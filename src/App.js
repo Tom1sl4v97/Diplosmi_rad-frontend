@@ -7,6 +7,7 @@ import DetailPage from "./pages/DetailPage";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import PageNotFound from "./pages/PageNotFound";
+import UserSettingPage from "./pages/UserSettingPage";
 
 import "./app.css";
 
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "registration",
         element: <RegistrationPage />,
+      },
+      {
+        path: "userSetting",
+        element: <UserSettingPage />,
       },
     ],
   },

@@ -69,7 +69,6 @@ function Content(props) {
   );
 
   const AssetsHandler = (node) => {
-    console.log("node", node);
     const { title, description, file } = node.data.target.fields;
     const mimeType = file.contentType;
     const mimeGroup = mimeType.split("/")[0];
@@ -79,11 +78,7 @@ function Content(props) {
         return (
           <div className="flex flex-col items-center mb-8">
             <div className="container max-w-screen-lg mx-auto pb-4 flex justify-center">
-              <img
-                alt={title}
-                src="https://images.ctfassets.net/3587efa5a65l/72Q5L6EpOkhoLq8uKZRXUI/5f556fa898234efa189eb2f04bfc896a/pixel3xl.jpg"
-                className="mix-blend-color-burn"
-              />
+              <img alt={title} src={file.url} />
             </div>
             <p className="font-bold text-lg">{description}</p>
           </div>
@@ -116,49 +111,51 @@ function Content(props) {
 
   const Table = ({ node, children }) => {
     return (
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg mb-8">
-        <table className="w-full text-base text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-base font-bold text-cyan uppercase bg-cyanLight dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              {children[0].props.children.map((item, index) => {
-                return (
-                  <th
-                    scope="col"
-                    className="px-6 py-3"
-                    key={item.props.children + index}
-                  >
-                    {item.props.children}
-                  </th>
-                );
+      <>
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg mb-8">
+          <table className="w-full text-base text-left text-gray-500 dark:text-gray-400">
+            <thead className="text-base font-bold text-cyan uppercase bg-cyanLight dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                {children[0].props.children.map((item, index) => {
+                  return (
+                    <th
+                      scope="col"
+                      className="px-6 py-3"
+                      key={item.props.children + index}
+                    >
+                      {item.props.children}
+                    </th>
+                  );
+                })}
+              </tr>
+            </thead>
+            <tbody>
+              {children.map((item, index) => {
+                if (index !== 0) {
+                  return (
+                    <tr
+                      key={index}
+                      className="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600"
+                    >
+                      {item.props.children.map((item, index2) => {
+                        return (
+                          <td
+                            className="border px-4 py-2"
+                            key={index + "&" + index2}
+                          >
+                            {item.props.children}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  );
+                }
+                return null;
               })}
-            </tr>
-          </thead>
-          <tbody>
-            {children.map((item, index) => {
-              if (index !== 0) {
-                return (
-                  <tr
-                    key={index}
-                    className="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-                  >
-                    {item.props.children.map((item, index2) => {
-                      return (
-                        <td
-                          className="border px-4 py-2"
-                          key={index + "&" + index2}
-                        >
-                          {item.props.children}
-                        </td>
-                      );
-                    })}
-                  </tr>
-                );
-              }
-              return null;
-            })}
-          </tbody>
-        </table>
-      </div>
+            </tbody>
+          </table>
+        </div>
+      </>
     );
   };
 

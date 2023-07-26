@@ -42,6 +42,7 @@
   "userRegistrationPasswordConfirmIsEmtpy": "Passwortbestätigung ist leer",
   "userRegistrationPasswordsDoNotMatch": "Passwörter stimmen nicht überein",
   "userRegistrationPasswordIsWeak": "Passwort ist zu schwach",
+  "userRegistrationError": "Fehler bei der Registrierung",
 
   "blogMissionTitle": "Unsere Mission",
   "blogMissionText": "Unsere Mission ist es, Ihnen die neuesten Nachrichten aus der Welt der Technologie zu bringen, die Sie:",
@@ -61,5 +62,8 @@
 
   "error404Title": "Fehler 404",
   "error404Text": "Seite nicht gefunden",
-  "error404GoBack": "Zurück zur Startseite"
+  "error404GoBack": "Zurück zur Startseite",
+
+  "users": "Benutzer",
+  "settings": "einstellungen"
 }

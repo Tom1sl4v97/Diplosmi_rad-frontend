@@ -32,14 +32,14 @@ function Mission() {
         </ScrollAnimationWrapper>
         
         <div className="flex flex-col justify-center">
-          <h3 className="text-3xl lg:text-4xl text-black-600 font-serif">
+          <h3 className="text-3xl lg:text-4xl font-bold pb-2">
             {text("blogMissionTitle")}
           </h3>
-          <p className="my-2 text-black-500">{text("blogMissionText")}</p>
+          <p className="my-2 text-xl pb-2">{text("blogMissionText")}</p>
           <ul className="text-black-500 self-start list-inside ml-8">
             {missionText.map((feature, index) => (
               <motion.li
-                className="relative circle-check custom-list"
+                className="relative circle-check custom-list pb-1"
                 custom={{ duration: 2 + index }}
                 variants={scrollAnimation}
                 key={feature}

@@ -14,6 +14,8 @@ import Divider from "./Divider";
 import GoogleButton from "./GoogleButton";
 import useInput from "../../hooks/use-input";
 
+const serverURL = "http://localhost:5050/api";
+
 function Login(props) {
   const { t: text } = useTranslation();
   const navigate = useNavigate();
@@ -69,29 +71,16 @@ function Login(props) {
   };
 
   const successfullLogin = async (userData) => {
+    const email = userData.user.email;
     const token = await userData.user.getIdToken();
 
-    const url = "http://localhost:5050/api/users";
-    let headers = new Headers();
-
-    headers.append("Access-Control-Allow-Origin", "http://127.0.0.1:3000");
-    headers.append("Access-Control-Allow-Methods", "POST");
-    headers.append(
-      "Access-Control-Allow-Headers",
-      "Content-Type, Authorization"
+    const user = await getUserDataFromServer(
+      email,
+      token,
+      userData.user.displayName
     );
-    headers.append("authtoken", token);
 
-    // const response = await fetch(url, {
-    //   method: "GET",
-    //   headers: headers,
-    // });
-
-    const user = {
-      username: userData.user.displayName,
-      email: userData.user.email,
-      image: "https://img.icons8.com/?size=512&id=0lg0kb05hrOz&format=png",
-    };
+    console.log(user);
 
     setUserSession({
       role: "user",
@@ -104,6 +93,46 @@ function Login(props) {
 
     resetEmailInput();
     resetPasswordInput();
+  };
+
+  const getUserDataFromServer = async (email, token, username) => {
+    const url = serverURL + "/users";
+    let headers = new Headers();
+
+    headers.append("Authorization", "Bearer " + token);
+    headers.append("email", email);
+
+    const response = await fetch(url, {
+      method: "GET",
+      headers: headers,
+    });
+
+    var user;
+
+    if (response.status === 204) {
+      user = {
+        username: username,
+        email: email,
+        image: null,
+        firstName: null,
+        lastName: null,
+        phoneNumber: null,
+        birthDate: null,
+      };
+    } else if (response.status === 200) {
+      const data = await response.json();
+      user = {
+        username: data.userName,
+        email: data.email,
+        image: null,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        phoneNumber: data.phoneNumber,
+        birthDate: data.birthDate.startDate,
+      };
+    }
+
+    return user;
   };
 
   useEffect(() => {
@@ -155,7 +184,7 @@ function Login(props) {
     if (err.code === "auth/user-not-found") {
       setError(text("userNotFound"));
     }
-    if (err.code === "auth/wrong-password") {
+    else if (err.code === "auth/wrong-password") {
       setError(text("userWrongPassword"));
     } else {
       setError(text("userLoginUnknownError"));

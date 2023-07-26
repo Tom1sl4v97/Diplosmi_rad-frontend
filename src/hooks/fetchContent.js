@@ -12,7 +12,7 @@ export function useFetchContent(specifiedId = null) {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
-  const [languageStorage, setLanguageStorage] = useSessionStorage(
+  const [languageStorage] = useSessionStorage(
     "language",
     "en-US"
   );

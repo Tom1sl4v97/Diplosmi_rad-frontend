@@ -10,6 +10,10 @@ function DetailPage() {
   const postID = useParams();
   const { loadingData, data } = useFetchContent(postID.postID);
 
+  setTimeout(() => {
+    console.log(data);
+  }, 5000);
+
   return (
     <>
       {loadingData ? (

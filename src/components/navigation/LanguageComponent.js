@@ -31,6 +31,7 @@ function LanguageComponent(props) {
     if (code === "de") language = "en-US";
     setLanguageStorage(language);
     i18n.changeLanguage(code);
+    window.location.reload();
   };
 
   return (
