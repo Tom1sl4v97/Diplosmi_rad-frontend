@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSessionStorage } from "../../hooks/SessionStorage";
@@ -16,24 +16,20 @@ function classNames(...classes) {
 }
 
 function MainNavigation() {
-  const [userData, setUserData] = useSessionStorage(
-    "userData",
-    {
-      role: "un-register",
-      user: {
-        username: null,
-        email: null,
-        image: null,
-      },
-      tokenKey: null,
-    }
-  );
+  const [userData, setUserData] = useSessionStorage("userData", {
+    role: "un-register",
+    user: {
+      username: null,
+      email: null,
+      image: null,
+    },
+    tokenKey: null,
+  });
   const sessionData = useSelector((state) => state.auth);
 
-  if (sessionData.isAuthenticated) {
-    window.location.reload();
-  }
-
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { t: text } = useTranslation();
+  const navigate = useNavigate();
   const isActive = userData.role !== "un-register";
   const user = userData.user;
   const userImage =
@@ -41,8 +37,9 @@ function MainNavigation() {
       ? user.image
       : "https://img.icons8.com/?size=512&id=118243&format=png";
 
-  const [menuOpen, setMenuOpen] = useState(false);
-  const { t: text } = useTranslation();
+  if (sessionData.isAuthenticated) {
+    window.location.reload();
+  }
 
   const logoutHandler = async () => {
     console.log("Logout");
@@ -62,6 +59,8 @@ function MainNavigation() {
     } catch (err) {
       console.error(err);
     }
+    //redirect user to homepage
+    navigate("/", { replace: true });
   };
 
   const stilovi =

@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useFetchContent } from "../hooks/fetchContent";
+import useVisitingPage from "../hooks/visitingPage";
 
 import LoadingCom from "../components/pomocno/LoadingCom";
 import Title from "../components/detailPage/Title";
@@ -7,12 +8,14 @@ import Image from "../components/detailPage/Image";
 import Content from "../components/detailPage/Content";
 
 function DetailPage() {
-  const postID = useParams();
-  const { loadingData, data } = useFetchContent(postID.postID);
+  const postID = useParams().postID;
+  const { loadingData, data } = useFetchContent(postID);
 
-  setTimeout(() => {
-    console.log(data);
-  }, 5000);
+  useVisitingPage(postID);
+
+  // setTimeout(() => {
+  //   console.log(data);
+  // }, 5000);
 
   return (
     <>

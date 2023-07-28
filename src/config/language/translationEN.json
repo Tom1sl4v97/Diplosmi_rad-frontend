@@ -66,5 +66,6 @@
   "error404GoToHomepage": "Go to homepage",
 
   "users": "User",
-  "settings": "settings"
+  "settings": "settings",
+  "saveSettings": "Save settings"
 }

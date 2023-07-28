@@ -1,5 +1,9 @@
 function SubmitButton(prop) {
-  const { text, value, onClick} = prop;
+  const { text, value, onClick, color = "white" } = prop;
+
+  const buttonCSS =
+    "rounded-3xl bg-cyan bg-opacity-50 px-6 py-2 shadow-xl backdrop-blur-md transition-colors duration-300 hover:bg-yellow-600 text-" +
+    color;
 
   return (
     <>
@@ -9,7 +13,7 @@ function SubmitButton(prop) {
           name="intent"
           onClick={onClick}
           value={value}
-          className="rounded-3xl bg-cyan bg-opacity-50 px-6 py-2 text-white shadow-xl backdrop-blur-md transition-colors duration-300 hover:bg-yellow-600"
+          className={buttonCSS}
         >
           {text}
         </button>

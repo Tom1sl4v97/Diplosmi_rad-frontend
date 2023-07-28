@@ -1,7 +1,7 @@
 function InputField(props) {
   const { type, name, forInput, placeholder, error, onChange, onBlur, } = props;
 
-  const inputErrorCSS = error ? "placeholder-lightRed text-lightRed " : "";
+  const inputErrorCSS = error ? "placeholder-[#fda4af] placeholder-lightRed text-lightRed " : "";
   const inputCSS = inputErrorCSS + "w-full rounded-3xl border-none bg-cyan bg-opacity-50 px-6 py-2 text-center text-inherit placeholder-slate-200 shadow-lg outline-none backdrop-blur-md transition-colors duration-300 hover:bg-yellow-600"
 
   return (

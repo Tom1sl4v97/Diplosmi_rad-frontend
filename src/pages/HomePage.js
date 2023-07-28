@@ -1,48 +1,68 @@
-import { useFetchContent } from "../hooks/fetchContent";
-
+import { useState } from "react";
 import HomePageTitle from "../components/homepage/Title";
 import HomePagePrvaSlika from "../components/homepage/PrvaSlika";
 import LoadingCom from "../components/pomocno/LoadingCom";
 import FullContent from "../components/homepage/FullContent";
+import { useFetchContent } from "../hooks/fetchContent";
+
+const skipPage = 6;
 
 function HomePage(props) {
-  const { loadingData, data } = useFetchContent();
+  const {
+    loadingData: firstLoading,
+    data: firstData,
+    totalCount,
+    error,
+  } = useFetchContent(null, 1, 0);
 
-  if (props && props.location) {
-    let userData = props.location.state;
-    console.log("UserData nakon login-a: " + userData);
+  if (error !== null) {
+    console.log("Error on home page: ", error);
   }
 
-  if (!loadingData) {
-    var najnovijiDatum = new Date(
-      Math.max.apply(
-        null,
-        data.map((e) => {
-          return new Date(e.dateOfCreation);
-        })
-      )
-    );
-    var najnovijiPostovi = data.filter((e) => {
-      var d = new Date(e.dateOfCreation);
-      return d.getTime() === najnovijiDatum.getTime();
-    })[0];
-  }
+  const [currentPage, setCurrentPage] = useState(1);
+  const { loadingData, data } = useFetchContent(
+    null,
+    skipPage,
+    currentPage * skipPage - skipPage + 1
+  );
 
-  if (!loadingData) {
-    var otherData = data.filter((item) => {
-      return item.id !== najnovijiPostovi.id;
-    });
-  }
+  const nextPage = () => {
+    if (currentPage * skipPage < totalCount) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  const goToPage = (page) => {
+    setCurrentPage(page);
+  };
 
   return (
     <>
       <HomePageTitle />
-      {loadingData ? (
+      {firstLoading ? (
         <LoadingCom />
       ) : (
         <>
-          <HomePagePrvaSlika najnovijiPost={najnovijiPostovi} />
-          <FullContent contentData={otherData} />
+          <HomePagePrvaSlika najnovijiPost={firstData[0]} />
+          {loadingData ? (
+            <LoadingCom />
+          ) : (
+            <FullContent
+              contentData={data}
+              nextPage={nextPage}
+              prevPage={prevPage}
+              currentPage={currentPage}
+              totalCount={totalCount - 1}
+              skipPage={skipPage}
+              goToPage={goToPage}
+            />
+          )}
         </>
       )}
     </>

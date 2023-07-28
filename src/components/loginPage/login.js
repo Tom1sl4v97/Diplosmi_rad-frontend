@@ -14,7 +14,7 @@ import Divider from "./Divider";
 import GoogleButton from "./GoogleButton";
 import useInput from "../../hooks/use-input";
 
-const serverURL = "http://localhost:5050/api";
+const serverURL = process.env.REACT_APP_SERVER_URL;
 
 function Login(props) {
   const { t: text } = useTranslation();
@@ -79,8 +79,6 @@ function Login(props) {
       token,
       userData.user.displayName
     );
-
-    console.log(user);
 
     setUserSession({
       role: "user",

@@ -13,7 +13,7 @@ import InputField from "./InputField";
 import SubmitButton from "./SubmitButton";
 import useInput from "../../hooks/use-input";
 
-const serverURL = "http://localhost:5050/api";
+const serverURL = process.env.REACT_APP_SERVER_URL;
 
 function Registration() {
   const { t: text } = useTranslation();
