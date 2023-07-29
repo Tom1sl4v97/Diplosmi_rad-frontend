@@ -66,5 +66,9 @@
 
   "users": "Benutzer",
   "settings": "einstellungen",
-  "saveSettings": "Einstellungen speichern"
+  "saveSettings": "Einstellungen speichern",
+
+  "selecCategories": "Kategorien auswählen ",
+  "selectAll": "Alle auswählen",
+  "apply": "Anwenden"
 }

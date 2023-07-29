@@ -1,29 +1,29 @@
 import { useState } from "react";
+import { useFetchContent, useFetchFirstContent } from "../hooks/fetchContent";
+
 import HomePageTitle from "../components/homepage/Title";
 import HomePagePrvaSlika from "../components/homepage/PrvaSlika";
 import LoadingCom from "../components/pomocno/LoadingCom";
 import FullContent from "../components/homepage/FullContent";
-import { useFetchContent } from "../hooks/fetchContent";
+import SelectCategorys from "../components/homepage/SelectCategorys";
+import MostPopularPosts from "../components/mostPopularPosts/MostPopularPosts";
 
 const skipPage = 6;
 
 function HomePage(props) {
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const {
     loadingData: firstLoading,
     data: firstData,
-    totalCount,
-    error,
-  } = useFetchContent(null, 1, 0);
-
-  if (error !== null) {
-    console.log("Error on home page: ", error);
-  }
+  } = useFetchFirstContent();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const { loadingData, data } = useFetchContent(
-    null,
+  const { loadingData, data, totalCount } = useFetchContent(
     skipPage,
-    currentPage * skipPage - skipPage + 1
+    currentPage * skipPage -
+      skipPage +
+      (selectedCategories.length === 0 ? 1 : 0),
+    selectedCategories
   );
 
   const nextPage = () => {
@@ -42,6 +42,11 @@ function HomePage(props) {
     setCurrentPage(page);
   };
 
+  const handleCategoryChange = (categoryList) => {
+    setSelectedCategories(categoryList);
+    setCurrentPage(1);
+  };
+
   return (
     <>
       <HomePageTitle />
@@ -53,16 +58,22 @@ function HomePage(props) {
           {loadingData ? (
             <LoadingCom />
           ) : (
-            <FullContent
-              contentData={data}
-              nextPage={nextPage}
-              prevPage={prevPage}
-              currentPage={currentPage}
-              totalCount={totalCount - 1}
-              skipPage={skipPage}
-              goToPage={goToPage}
-            />
+            <>
+              <SelectCategorys handleCategoryChange={handleCategoryChange} />
+
+              <FullContent
+                contentData={data}
+                nextPage={nextPage}
+                prevPage={prevPage}
+                currentPage={currentPage}
+                totalCount={totalCount - 1}
+                skipPage={skipPage}
+                goToPage={goToPage}
+              />
+            </>
           )}
+
+          <MostPopularPosts />
         </>
       )}
     </>

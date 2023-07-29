@@ -67,5 +67,9 @@
 
   "users": "User",
   "settings": "settings",
-  "saveSettings": "Save settings"
+  "saveSettings": "Save settings",
+
+  "selecCategories": "Select categories ",
+  "selectAll": "Select all",
+  "apply": "Apply"
 }

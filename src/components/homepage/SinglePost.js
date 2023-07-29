@@ -9,7 +9,7 @@ function SinglePost(props) {
   const { img, author, dateOfCreation, title, subTitle, categories } =
     props.item;
 
-  const ref = useRef(); // We will use React useRef hook to reference the wrapping div:
+  const ref = useRef();
   const { events } = useDraggable(ref);
 
   return (

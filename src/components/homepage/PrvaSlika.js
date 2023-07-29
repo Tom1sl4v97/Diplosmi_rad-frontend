@@ -11,7 +11,7 @@ function HomePagePrvaSika(props) {
   return (
     <Link to={`detailPage/${id}`}>
       <section id="prvaSlika">
-        <div className="lg:p-12 w-10/12 mx-auto mb-16">
+        <div className="lg:p-12 w-10/12 mx-auto mb-16 lg:mb-0">
           <div className="group relative overflow-hidden shadow-2xl rounded-3xl">
             <img
               src={img}

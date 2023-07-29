@@ -2,7 +2,7 @@ import SinglePost from "./SinglePost";
 import Pagination from "../navigation/Pagination";
 
 function FullContent(props) {
-  const { contentData, prevPage, nextPage, currentPage, totalCount, skipPage, goToPage} = props;
+  const { contentData, prevPage, nextPage, currentPage, totalCount, skipPage, goToPage, listing} = props;
 
   return (
     <div className="container mx-auto my-12 lg:mt-0">
@@ -18,6 +18,7 @@ function FullContent(props) {
         totalCount={totalCount}
         skipPage={skipPage}
         goToPage={goToPage}
+        listing={listing}
       />
     </div>
   );
