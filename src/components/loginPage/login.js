@@ -80,8 +80,11 @@ function Login(props) {
       userData.user.displayName
     );
 
+    const userRole = user.role;
+    delete user.role;
+
     setUserSession({
-      role: "user",
+      role: userRole,
       user: user,
       tokenKey: token,
       dateTimeStamp: new Date().getTime(),
@@ -116,6 +119,7 @@ function Login(props) {
         lastName: null,
         phoneNumber: null,
         birthDate: null,
+        role: "user",
       };
     } else if (response.status === 200) {
       const data = await response.json();
@@ -127,6 +131,7 @@ function Login(props) {
         lastName: data.lastName,
         phoneNumber: data.phoneNumber,
         birthDate: data.birthDate.startDate,
+        role: data.role,
       };
     }
 

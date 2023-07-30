@@ -1,6 +1,14 @@
 {
   "homePageTitle": "Svijet u Oblacima",
   "homePageSubTitle": "Blog koji Vam dostavlja najnovije vijesti iz svijeta tehnologije.",
+  "homePageAllPosts": "Svi članci",
+  "homePageMostPopularPosts": "Najpopularniji članci",
+  
+  "selecCategories": "Odaberi kategorije ",
+  "selectAll": "Odaberi sve",
+  "apply": "Primijeni",
+
+
   "login": "Prijava",
   "loginLabel": "Unesite svoje podatke za prijavu",
   "registrationLabel": "Unesite svoje podatke za registraciju",
@@ -67,9 +75,5 @@
   "error404GoToHomepage": "Idi na početnu stranicu",
   "users": "Korisniče",
   "settings": "postavke",
-  "saveSettings": "Spremi postavke",
-
-  "selecCategories": "Odaberi kategorije ",
-  "selectAll": "Odaberi sve",
-  "apply": "Primijeni"
+  "saveSettings": "Spremi postavke"
 }

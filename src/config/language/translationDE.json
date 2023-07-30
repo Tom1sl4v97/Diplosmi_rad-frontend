@@ -1,6 +1,13 @@
 {
   "homePageTitle": "Welt in den Wolken",
   "homePageSubTitle": "Blog, der Ihnen die neuesten Nachrichten aus der Welt der Technologie bringt.",
+  "homePageAllPosts": "Alle Beiträge",
+  "homePageMostPopularPosts": "Beliebteste Beiträge",
+
+  "selecCategories": "Kategorien auswählen ",
+  "selectAll": "Alle auswählen",
+  "apply": "Anwenden",
+
   "login": "Anmeldung",
   "loginLabel": "Geben Sie Ihre Anmeldeinformationen ein",
   "registrationLabel": "Geben Sie Ihre Registrierungsdaten ein",
@@ -66,9 +73,5 @@
 
   "users": "Benutzer",
   "settings": "einstellungen",
-  "saveSettings": "Einstellungen speichern",
-
-  "selecCategories": "Kategorien auswählen ",
-  "selectAll": "Alle auswählen",
-  "apply": "Anwenden"
+  "saveSettings": "Einstellungen speichern"
 }

@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSessionStorage } from "../../hooks/SessionStorage";
 import { auth } from "../../config/Firebase";
@@ -41,6 +41,10 @@ function MainNavigation() {
     window.location.reload();
   }
 
+  useEffect(() => {
+    navigate("/", { replace: true });
+  }, [userData]);
+
   const logoutHandler = async () => {
     console.log("Logout");
 
@@ -59,8 +63,7 @@ function MainNavigation() {
     } catch (err) {
       console.error(err);
     }
-    //redirect user to homepage
-    navigate("/", { replace: true });
+
   };
 
   const stilovi =
@@ -105,7 +108,6 @@ function MainNavigation() {
   const dijeloviUlogiranogKorisnika = (
     <>
       <div className="inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-        {/* Profile dropdown */}
         <Menu as="div" className="relative ml-3">
           <div>
             <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
@@ -140,7 +142,7 @@ function MainNavigation() {
               <Menu.Item>
                 {({ active }) => (
                   <a
-                    href="#"
+                    href="/userSetting"
                     className={classNames(
                       active ? "bg-gray-100" : "",
                       "block px-4 py-2 text-sm text-gray-700"
@@ -150,23 +152,20 @@ function MainNavigation() {
                   </a>
                 )}
               </Menu.Item>
+              {userData.role === "admin" && (
+                <a
+                  href="#"
+                  className={classNames(
+                    "hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
+                  )}
+                >
+                  {text("userMenuSettings")}
+                </a>
+              )}
               <Menu.Item>
                 {({ active }) => (
                   <a
                     href="/userSetting"
-                    className={classNames(
-                      active ? "bg-gray-100" : "",
-                      "block px-4 py-2 text-sm text-gray-700"
-                    )}
-                  >
-                    {text("userMenuSettings")}
-                  </a>
-                )}
-              </Menu.Item>
-              <Menu.Item>
-                {({ active }) => (
-                  <a
-                    href="#"
                     onClick={logoutHandler}
                     className={classNames(
                       active ? "bg-gray-100" : "",

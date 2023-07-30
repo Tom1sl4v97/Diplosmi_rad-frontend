@@ -1,6 +1,13 @@
 {
   "homePageTitle": "World in the Clouds",
   "homePageSubTitle": "Blog that brings you the latest news from the world of technology.",
+  "homePageAllPosts": "All posts",
+  "homePageMostPopularPosts": "Most popular posts",
+
+  "selecCategories": "Select categories ",
+  "selectAll": "Select all",
+  "apply": "Apply",
+
   "login": "Login",
   "loginLabel": "Enter your login details",
   "registrationLabel": "Enter your registration details",
@@ -30,7 +37,7 @@
   "userMenuLogout": "Logout",
   "userNotFound": "User not found",
   "userWrongPassword": "Wrong password",
-  
+
   "userLoginUnknownError": "Unknown error occurred while logging in",
   "userLoginEmailAndPasswordIsEmtpy": "Email and password are empty",
   "userLoginEmailIsEmtpy": "Email is empty or invalid",
@@ -67,9 +74,5 @@
 
   "users": "User",
   "settings": "settings",
-  "saveSettings": "Save settings",
-
-  "selecCategories": "Select categories ",
-  "selectAll": "Select all",
-  "apply": "Apply"
+  "saveSettings": "Save settings"
 }

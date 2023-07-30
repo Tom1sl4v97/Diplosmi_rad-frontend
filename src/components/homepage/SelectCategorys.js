@@ -52,10 +52,9 @@ function SelectCategorys(props) {
   return (
     <div className="w-[90%] flex justify-end">
       {" "}
-      {/* Use 'flex justify-end' to align the component to the right */}
       <button
         id="dropdownCheckboxButton"
-        onClick={toggleDropdown} // Toggle dropdown on button click
+        onClick={toggleDropdown}
         className="ml-auto p-10 text-white font-bold text-xl bg-cyan hover:bg-cyanDark focus:ring-4 focus:outline-none focus:ring-cyanLight rounded-lg px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         type="button"
       >
@@ -76,7 +75,7 @@ function SelectCategorys(props) {
           />
         </svg>
       </button>
-      {dropdownOpen && ( // Render the list only if dropdownOpen is true
+      {dropdownOpen && (
         <div
           id="dropdownDefaultCheckbox"
           className="mt-10 mr-4 z-10 w-48 absolute bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
@@ -122,7 +121,7 @@ function SelectCategorys(props) {
             ))}
             <button
               id="dropdownCheckboxButton"
-              onClick={applyCategoriesHandler} // Toggle dropdown on button click
+              onClick={applyCategoriesHandler}
               className="text-white bg-cyan hover:bg-cyanDark font-bold rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
               type="button"
             >
