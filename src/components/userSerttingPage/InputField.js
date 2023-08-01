@@ -2,7 +2,7 @@ function InputFieldLevi(props) {
   const { label, name, onChange, color, htmlFor, type } = props;
 
   var placeholder;
-  
+
   switch (htmlFor) {
     case "firstName":
       placeholder = "Example: John";
@@ -16,9 +16,12 @@ function InputFieldLevi(props) {
     case "phoneNumber":
       placeholder = "Example: 081234567890";
       break;
+    case "email":
+      placeholder = "Example: Jhon1995@gmail.com";
+      break;
     default:
       placeholder = "Example: John";
-  };
+  }
 
   const labelCSS =
     "text-" + color + " block uppercase tracking-wide text-xl font-bold mb-2";

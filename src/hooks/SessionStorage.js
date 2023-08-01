@@ -1,5 +1,5 @@
 import { useCallback, useState, useEffect } from "react";
-import { useNavigation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function useLocalStorage(key, defaultValue) {
   return useStorage(key, defaultValue, window.localStorage);
@@ -10,7 +10,7 @@ export function useSessionStorage(key, defaultValue) {
 }
 
 function useStorage(key, defaultValue, storageObject) {
-  const navigator = useNavigation();
+  const navigator = useNavigate();
 
   const [value, setValue] = useState(() => {
     const jsonValue = storageObject.getItem(key);
@@ -47,7 +47,7 @@ function useStorage(key, defaultValue, storageObject) {
         tokenKey: null,
       });
 
-      navigator.push("/login");
+      navigator("/login");
     }
   }
 
@@ -78,4 +78,14 @@ export function defaultSession() {
     tokenKey: null,
     dateTimeStamp: null,
   };
+}
+
+export function defaultPageSettings(){
+  return {
+    defaultPageSettings: true,
+    allContentPageSkip: 3,
+    mostPopularPageSkip: 3,
+    bestScoredPageSkip: 3,
+    searchComponentPageSkip: 6,
+  }
 }

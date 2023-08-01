@@ -3,10 +3,26 @@
   "homePageSubTitle": "Blog that brings you the latest news from the world of technology.",
   "homePageAllPosts": "All posts",
   "homePageMostPopularPosts": "Most popular posts",
+  "homePageBestScorePost": "Best score posts",
+
+  "poweredBy": "Powered by",
 
   "selecCategories": "Select categories ",
   "selectAll": "Select all",
   "apply": "Apply",
+
+  "searchArticlesPlaceholder": "Search articles",
+  "searchArticlesNoContent": "No articles found",
+
+  "detailPageCommentsDiscution": "Discussion",
+  "detailPageCommentsRateThisPost": "Rate this post:",
+  "detailPageCommentsWriteComment": "Write a comment",
+  "detailPageCommentsPleaseFillComment": "Please fill in the comment",
+  "detailPageCommentsPostComment": "Post comment",
+  "detailPageCommentsRemoveComment": "Remove comment",
+  "detailPageCommentsEvaluation": "Evaluation:",
+  "detailPageCommentsAverageScore": "Average score:",
+  "detailPageCommentsNoComments": "No comments",
 
   "login": "Login",
   "loginLabel": "Enter your login details",
@@ -42,7 +58,7 @@
   "userLoginEmailAndPasswordIsEmtpy": "Email and password are empty",
   "userLoginEmailIsEmtpy": "Email is empty or invalid",
   "userLoginPasswordIsEmtpy": "Password is empty",
-  "userRegistrationEmailIsEmtpy": "Email is empty or invalid",
+  "userRegistrationEmailIsEmpty": "Email is empty or invalid",
   "userRegistrationEmailIsAlreadyInUse": "Email is already in use",
   "userRegistrationEmailIsInvalid": "Email is invalid",
   "userRegistrationUsernameIsEmpty": "Username is empty",
@@ -72,7 +88,15 @@
   "error404Text": "Page not found",
   "error404GoToHomepage": "Go to homepage",
 
-  "users": "User",
-  "settings": "settings",
+  "pageSettingsAllContentDisplay": "Display all content",
+  "pageSettingsMostPopularPostsDisplay": "Display most popular posts",
+  "pageSettingsBestScorePostsDisplay": "Display best score posts",
+  "pageSettingsSearchComponentDisplay": "Display search component",
+  "pageSettingsNewModeratorEmail": "New moderator email",
+  "pageSettingsSaveNewModerator": "Save new moderator",
+  "pageSettingsSuccessNewModerator": "New moderator successfully saved",
+
+  "usersSettings": "Users Settings",
+  "pagesSettings": "Pages Settings",
   "saveSettings": "Save settings"
 }

@@ -1,4 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { useLocalStorage, defaultPageSettings } from "./hooks/SessionStorage";
 
 import RootLayout from "./pages/Root";
 import HomePage from "./pages/HomePage";
@@ -8,6 +9,8 @@ import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import PageNotFound from "./pages/PageNotFound";
 import UserSettingPage from "./pages/UserSettingPage";
+import SearchedContentPage from "./pages/SearchedContentPage";
+import PageSettings from "./pages/PageSettings";
 
 import "./app.css";
 
@@ -40,6 +43,14 @@ const router = createBrowserRouter([
       {
         path: "userSetting",
         element: <UserSettingPage />,
+      },
+      {
+        path: "searchedContent/:searchedContent",
+        element: <SearchedContentPage />,
+      },
+      {
+        path: "pageSettings",
+        element: <PageSettings />,
       },
     ],
   },

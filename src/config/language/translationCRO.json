@@ -3,11 +3,26 @@
   "homePageSubTitle": "Blog koji Vam dostavlja najnovije vijesti iz svijeta tehnologije.",
   "homePageAllPosts": "Svi članci",
   "homePageMostPopularPosts": "Najpopularniji članci",
+  "homePageBestScorePost": "Najbolje ocijenjeni članci",
+
+  "poweredBy": "Powered by",
   
   "selecCategories": "Odaberi kategorije ",
   "selectAll": "Odaberi sve",
   "apply": "Primijeni",
 
+  "searchArticlesPlaceholder": "Pretraži članke",
+  "searchArticlesNoContent": "Nema rezultata pretrage",
+
+  "detailPageCommentsDiscution": "Rasprava",
+  "detailPageCommentsRateThisPost": "Ocijeni ovaj članak:",
+  "detailPageCommentsWriteComment": "Napiši komentar",
+  "detailPageCommentsPostComment": "Objavi komentar",
+  "detailPageCommentsPleaseFillComment": "Molimo Vas da ispunite komentar",
+  "detailPageCommentsRemoveComment": "Ukloni komentar",
+  "detailPageCommentsEvaluation": "Ocjena:",
+  "detailPageCommentsAverageScore": "Prosječna ocjena:",
+  "detailPageCommentsNoComments": "Nema komentara",
 
   "login": "Prijava",
   "loginLabel": "Unesite svoje podatke za prijavu",
@@ -73,7 +88,16 @@
   "error404Title": "Greška 404",
   "error404Text": "Stranica koju tražite ne postoji.",
   "error404GoToHomepage": "Idi na početnu stranicu",
-  "users": "Korisniče",
-  "settings": "postavke",
+
+  "pageSettingsAllContentDisplay": "Prikaz svih sadržaja",
+  "pageSettingsMostPopularPostsDisplay": "Prikaz najpopularnijih članaka",
+  "pageSettingsBestScorePostsDisplay": "Prikaz najbolje ocijenjenih članaka",
+  "pageSettingsSearchComponentDisplay": "Prikaz komponente za pretragu",
+  "pageSettingsNewModeratorEmail": "Email adresa novog moderatora",
+  "pageSettingsSaveNewModerator": "Spremi novog moderatora", 
+  "pageSettingsSuccessNewModerator": "Novi moderator je uspješno spremljen",
+
+  "usersSettings": "Postavke Korisnika",
+  "pagesSettings": "Postavke Stranica",
   "saveSettings": "Spremi postavke"
 }

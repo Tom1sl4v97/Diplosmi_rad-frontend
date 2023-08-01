@@ -1,19 +1,36 @@
 import { format } from "date-fns";
-import PrikazKategorija from "./PrikazKategorija";
-import { Link } from "react-router-dom";
-
-import { useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useDraggable } from "react-use-draggable-scroll";
+import { useRef } from "react";
+import { useTranslation } from "react-i18next";
+
+import PrikazKategorija from "./PrikazKategorija";
 
 function SinglePost(props) {
-  const { img, author, dateOfCreation, title, subTitle, categories } =
-    props.item;
+  const navigate = useNavigate();
+  const { t: text } = useTranslation();
+  const {
+    img,
+    author,
+    dateOfCreation,
+    title,
+    subTitle,
+    categories,
+    avgScore = null,
+  } = props.item;
 
   const ref = useRef();
   const { events } = useDraggable(ref);
 
+  const openContentHandler = () => {
+    navigate(`/detailPage/${props.item.id}`);
+  };
+
   return (
-    <Link to={`detailPage/${props.item.id}`}>
+    <button
+      onClick={openContentHandler}
+      className="text-left"
+    >
       <div className="group wrapper antialiased text-gray-900">
         <img
           src={img}
@@ -46,10 +63,16 @@ function SinglePost(props) {
               {title}
             </h4>
             <div className="mt-1 line-clamp-3 overflow-hidden">{subTitle}</div>
+
+            {avgScore !== null && (
+              <div className="text-md pt-2 font-bold">
+                {text("detailPageCommentsAverageScore")} {avgScore.toFixed(1)} / 5.0
+              </div>
+            )}
           </div>
         </div>
       </div>
-    </Link>
+    </button>
   );
 }
 

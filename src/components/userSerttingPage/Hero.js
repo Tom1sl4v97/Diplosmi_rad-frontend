@@ -1,7 +1,7 @@
-import { useTranslation } from "react-i18next";
-
-function Hero() {
-  const { t: text } = useTranslation();
+function Hero(props) {
+  const splitedText = props.text.split(" ");
+  const firstText = splitedText[0];
+  const secondText = splitedText[1];
 
   return (
     <>
@@ -10,8 +10,9 @@ function Hero() {
           <div className="text-center">
             <div className="block px-6 md:px-12">
               <h1 className="mt-6 mb-16 text-5xl font-bold tracking-tight md:text-6xl xl:text-7xl">
-                {text("users")} <br />
-                <span className="text-cyan">{text("settings")}</span>
+                {firstText}
+                <br />
+                <span className="text-cyan">{secondText}</span>
               </h1>
             </div>
           </div>

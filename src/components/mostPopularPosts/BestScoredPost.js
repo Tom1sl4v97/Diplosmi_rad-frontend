@@ -1,22 +1,23 @@
 import { useState } from "react";
-import { useFetchContentByMultipleId } from "../../hooks/fetchContent";
+import { useFetchContentBestScored } from "../../hooks/fetchContent";
 import {
   useLocalStorage,
   defaultPageSettings,
 } from "../../hooks/SessionStorage";
+
 import FullContent from "../homepage/FullContent";
 import LoadingCom from "../pomocno/LoadingCom";
 
-function MostPopularPosts() {
+function BestScoredPost() {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSettings, setPageSettings] = useLocalStorage(
     "pageSettings",
     defaultPageSettings
   );
 
-  const skipPage = parseInt(pageSettings.mostPopularPageSkip);
+  const skipPage = parseInt(pageSettings.bestScoredPageSkip);
 
-  const { loadingData, data, totalCount } = useFetchContentByMultipleId(
+  const { loadingData, data, totalCount } = useFetchContentBestScored(
     skipPage,
     currentPage * skipPage - skipPage
   );
@@ -55,4 +56,4 @@ function MostPopularPosts() {
   );
 }
 
-export default MostPopularPosts;
+export default BestScoredPost;

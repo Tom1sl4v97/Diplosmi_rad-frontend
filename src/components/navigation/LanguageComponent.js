@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useSessionStorage } from "../../hooks/SessionStorage";
+import SearchComponent from "./SearchComponent";
 
 function LanguageComponent(props) {
   const { t: text, i18n } = useTranslation();
@@ -54,7 +55,9 @@ function LanguageComponent(props) {
           );
         })}
       </div>
-      <div className="items-center p-2">TODO Search component</div>
+      <div className="w-[80%] md:w-64 lg:w-96">
+        <SearchComponent />
+      </div>
     </div>
   );
 }

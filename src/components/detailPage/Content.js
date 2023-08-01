@@ -86,13 +86,11 @@ function Content(props) {
       case "video":
         return (
           <div className="aspect-video m-12">
-            <iframe
+            <video
               title="video"
               className="w-full h-full object-none"
               src={file.url}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen={true}
+              controls loop autoPlay muted 
             />
           </div>
         );

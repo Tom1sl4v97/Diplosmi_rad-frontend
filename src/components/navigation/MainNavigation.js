@@ -1,5 +1,5 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSessionStorage } from "../../hooks/SessionStorage";
 import { auth } from "../../config/Firebase";
@@ -29,7 +29,6 @@ function MainNavigation() {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const { t: text } = useTranslation();
-  const navigate = useNavigate();
   const isActive = userData.role !== "un-register";
   const user = userData.user;
   const userImage =
@@ -41,13 +40,7 @@ function MainNavigation() {
     window.location.reload();
   }
 
-  useEffect(() => {
-    navigate("/", { replace: true });
-  }, [userData]);
-
   const logoutHandler = async () => {
-    console.log("Logout");
-
     setUserData({
       role: "un-register",
       user: {
@@ -63,7 +56,6 @@ function MainNavigation() {
     } catch (err) {
       console.error(err);
     }
-
   };
 
   const stilovi =
@@ -154,7 +146,7 @@ function MainNavigation() {
               </Menu.Item>
               {userData.role === "admin" && (
                 <a
-                  href="#"
+                  href="/pageSettings"
                   className={classNames(
                     "hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
                   )}
@@ -162,20 +154,15 @@ function MainNavigation() {
                   {text("userMenuSettings")}
                 </a>
               )}
-              <Menu.Item>
-                {({ active }) => (
-                  <a
-                    href="/userSetting"
-                    onClick={logoutHandler}
-                    className={classNames(
-                      active ? "bg-gray-100" : "",
-                      "block px-4 py-2 text-sm text-gray-700"
-                    )}
-                  >
-                    {text("userMenuLogout")}
-                  </a>
+              <a
+                href="/"
+                onClick={logoutHandler}
+                className={classNames(
+                  "hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700 w-full"
                 )}
-              </Menu.Item>
+              >
+                {text("userMenuLogout")}
+              </a>
             </Menu.Items>
           </Transition>
         </Menu>

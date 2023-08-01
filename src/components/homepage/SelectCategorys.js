@@ -50,12 +50,12 @@ function SelectCategorys(props) {
   }
 
   return (
-    <div className="w-[90%] flex justify-end">
+    <div className="md:w-[90%] md:flex md:justify-end">
       {" "}
       <button
         id="dropdownCheckboxButton"
         onClick={toggleDropdown}
-        className="ml-auto p-10 text-white font-bold text-xl bg-cyan hover:bg-cyanDark focus:ring-4 focus:outline-none focus:ring-cyanLight rounded-lg px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        className="ml-auto p-10 w-full md:w-auto text-white font-bold text-xl bg-cyan hover:bg-cyanDark focus:ring-4 focus:outline-none focus:ring-cyanLight rounded-lg px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         type="button"
       >
         {text("selecCategories")}
@@ -78,7 +78,7 @@ function SelectCategorys(props) {
       {dropdownOpen && (
         <div
           id="dropdownDefaultCheckbox"
-          className="mt-10 mr-4 z-10 w-48 absolute bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+          className="mt-[-6px] ml-2 md:mt-10 mr-4 z-10 w-48 absolute bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
         >
           <ul
             className="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200"

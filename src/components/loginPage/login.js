@@ -46,7 +46,7 @@ function Login(props) {
   );
 
   useEffect(() => {
-    if (userSession.role === "user") {
+    if (userSession.role !== "un-register") {
       navigate("/", { replace: true });
     }
   }, [userSession]);
