@@ -16,7 +16,7 @@ import useInput from "../../hooks/use-input";
 
 const serverURL = process.env.REACT_APP_SERVER_URL;
 
-function Login(props) {
+function Login() {
   const { t: text } = useTranslation();
   const navigate = useNavigate();
   const [error, setError] = useState(null);
@@ -24,7 +24,6 @@ function Login(props) {
 
   const {
     value: enteredEmail,
-    isValid: enteredEmailIsValid,
     hasError: emailInputHasError,
     valueChangeHandler: emailChangedHandler,
     inputBlurHandler: emailBlurHandler,
@@ -33,7 +32,6 @@ function Login(props) {
 
   const {
     value: enteredPassword,
-    isValid: enteredPasswordIsValid,
     hasError: passwordInputHasError,
     valueChangeHandler: passwordChangedHandler,
     inputBlurHandler: passwordBlurHandler,
@@ -49,7 +47,7 @@ function Login(props) {
     if (userSession.role !== "un-register") {
       navigate("/", { replace: true });
     }
-  }, [userSession]);
+  }, [userSession, navigate]);
 
   const dontHaveAccount = (
     <div className="flex justify-center">
@@ -186,8 +184,7 @@ function Login(props) {
   const errorHandler = (err) => {
     if (err.code === "auth/user-not-found") {
       setError(text("userNotFound"));
-    }
-    else if (err.code === "auth/wrong-password") {
+    } else if (err.code === "auth/wrong-password") {
       setError(text("userWrongPassword"));
     } else {
       setError(text("userLoginUnknownError"));

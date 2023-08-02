@@ -11,10 +11,6 @@ import { useSelector } from "react-redux";
 import LanguageComponent from "./LanguageComponent";
 import logo from "../../assets/images/logo.png";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
 function MainNavigation() {
   const [userData, setUserData] = useSessionStorage("userData", {
     role: "un-register",
@@ -131,25 +127,22 @@ function MainNavigation() {
                   {user.email}
                 </span>
               </div>
-              <Menu.Item>
-                {({ active }) => (
-                  <a
-                    href="/userSetting"
-                    className={classNames(
-                      active ? "bg-gray-100" : "",
-                      "block px-4 py-2 text-sm text-gray-700"
-                    )}
-                  >
-                    {text("userMenuYourProfile")}
-                  </a>
-                )}
-              </Menu.Item>
+              <a
+                href="/userShoppingHistory"
+                className="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700 w-full"
+              >
+                {text("userShoppingHistory")}
+              </a>
+              <a
+                href="/userSetting"
+                className="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
+              >
+                {text("userMenuYourProfile")}
+              </a>
               {userData.role === "admin" && (
                 <a
                   href="/pageSettings"
-                  className={classNames(
-                    "hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
-                  )}
+                  className="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
                 >
                   {text("userMenuSettings")}
                 </a>
@@ -157,9 +150,7 @@ function MainNavigation() {
               <a
                 href="/"
                 onClick={logoutHandler}
-                className={classNames(
-                  "hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700 w-full"
-                )}
+                className="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700 w-full"
               >
                 {text("userMenuLogout")}
               </a>

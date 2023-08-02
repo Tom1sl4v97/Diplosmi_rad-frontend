@@ -16,11 +16,11 @@ function NewModerator() {
   const [success, setSuccess] = useState(false);
 
   const emailHandler = (event) => {
+    setSuccess(false);
     setEmail(event.target.value);
   };
 
   const submitHandler = async () => {
-    // provjeri da li email sadrži @ i .com
     if (!email.includes("@") || !email.includes(".com") || email.length < 5) {
       setError("Email is not valid");
       return;
@@ -50,6 +50,7 @@ function NewModerator() {
       return;
     }
 
+    setSuccess(true);
     setError(false);
     setEmail("");
   };
@@ -71,7 +72,7 @@ function NewModerator() {
         )}
 
         {success && (
-          <div className="flex justify-center text-green">
+          <div className="flex justify-center text-cyanDark">
             {text("pageSettingsSuccessNewModerator")}
           </div>
         )}
