@@ -19,6 +19,18 @@ function InputFieldLevi(props) {
     case "email":
       placeholder = "Example: Jhon1995@gmail.com";
       break;
+    case "adress":
+      placeholder = "Example: Varaždinska ulica 5";
+      break;
+    case "city":
+      placeholder = "Example: Varaždin";
+      break;
+    case "country":
+      placeholder = "Example: Croatia";
+      break;
+    case "postalCode":
+      placeholder = "Example: 42000";
+      break;
     default:
       placeholder = "Example: John";
   }

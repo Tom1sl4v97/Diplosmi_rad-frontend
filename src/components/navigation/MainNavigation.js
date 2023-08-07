@@ -74,6 +74,12 @@ function MainNavigation() {
         {text("about")}
       </NavLink>
       <NavLink
+        to="/shop"
+        className={({ isActive }) => (isActive ? aktivniStilovi : stilovi)}
+      >
+        {text("shopPage")}
+      </NavLink>
+      <NavLink
         to="/trecaStranica"
         className={({ isActive }) => (isActive ? aktivniStilovi : stilovi)}
       >
@@ -127,12 +133,18 @@ function MainNavigation() {
                   {user.email}
                 </span>
               </div>
-              <a
-                href="/userShoppingHistory"
-                className="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700 w-full"
+              <NavLink
+                to="/shop/userCart"
+                className="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
+              >
+                {text("shopPageYourCart")}
+              </NavLink>
+              <NavLink
+                to="/shop/userShoppingHistory"
+                className="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
               >
                 {text("userShoppingHistory")}
-              </a>
+              </NavLink>
               <a
                 href="/userSetting"
                 className="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"

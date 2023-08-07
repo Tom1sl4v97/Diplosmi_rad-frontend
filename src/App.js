@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import RootLayout from "./pages/Root";
 import HomePage from "./pages/HomePage";
@@ -10,7 +10,11 @@ import PageNotFound from "./pages/PageNotFound";
 import UserSettingPage from "./pages/UserSettingPage";
 import SearchedContentPage from "./pages/SearchedContentPage";
 import PageSettings from "./pages/PageSettings";
-import UserShoppingHistory from "./pages/UserShoppingHistory";
+
+import ShopPage from "./pages/ShopPage";
+import UserCartPage from "./pages/UserCartPage";
+import UserShoppingHistoryPage from "./pages/UserShoppingHistoryPage";
+import OrderDitailPage from "./pages/OrderDitailPage";
 
 import "./app.css";
 
@@ -53,8 +57,32 @@ const router = createBrowserRouter([
         element: <PageSettings />,
       },
       {
-        path: "userShoppingHistory",
-        element: <UserShoppingHistory />,
+        path: "shop",
+        element: <Outlet />,
+        children: [
+          {
+            index: true,
+            element: <ShopPage />,
+          },
+          {
+            path: "userCart",
+            element: <UserCartPage />,
+          },
+          {
+            path: "userShoppingHistory",
+            element: <Outlet />,
+            children: [
+              {
+                index: true,
+                element: <UserShoppingHistoryPage />,
+              },
+              {
+                path: "orderDetail/:orderNumber",
+                element: <OrderDitailPage />,
+              },
+            ],
+          },
+        ],
       },
     ],
   },

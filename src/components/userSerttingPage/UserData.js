@@ -20,6 +20,12 @@ function UserData() {
     startDate: session.user.birthDate ?? "",
     endDate: session.user.birthDate ?? "",
   });
+
+  const [adress, setAdress] = useState(session.user.adress ?? "");
+  const [city, setCity] = useState(session.user.city ?? "");
+  const [country, setCountry] = useState(session.user.country ?? "");
+  const [postalCode, setPostalCode] = useState(session.user.postalCode ?? "");
+
   const [error, setError] = useState(null);
 
   const firstNameHandler = (event) => {
@@ -44,6 +50,22 @@ function UserData() {
     setBirthDate(newBirthDate);
   };
 
+  const adressHandler = (event) => {
+    setAdress(event.target.value);
+  };
+
+  const cityHandler = (event) => {
+    setCity(event.target.value);
+  };
+
+  const countryHandler = (event) => {
+    setCountry(event.target.value);
+  };
+
+  const postalCodeHandler = (event) => {
+    setPostalCode(event.target.value);
+  };
+
   const submitHandler = (event) => {
     event.preventDefault();
 
@@ -65,6 +87,10 @@ function UserData() {
       startDate: birthDate.startDate,
       endDate: birthDate.endDate,
     }
+    if (adress !== "") body.adress = adress;
+    if (city !== "") body.city = city;
+    if (country !== "") body.country = country;
+    if (postalCode !== "") body.postalCode = postalCode;
 
     body.userName = username;
     body.email = session.user.email;
@@ -96,6 +122,10 @@ function UserData() {
         phoneNumber: phoneNumber,
         username: username,
         birthDate: birthDate.startDate,
+        adress: adress,
+        city: city,
+        country: country,
+        postalCode: postalCode,
       },
     });
   };
@@ -160,6 +190,54 @@ function UserData() {
               asSingle={true}
               value={birthDate}
               onChange={birthDateHandler}
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-wrap -mx-3 mb-6">
+          <div className="w-full px-3">
+            <InputField
+              label={text("userSettingsAdress")}
+              name={adress}
+              onChange={adressHandler}
+              color="cyan"
+              htmlFor="adress"
+              type="text"
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-wrap -mx-3 mb-6">
+          <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+            <InputField
+              label={text("userSettingsPostalCode")}
+              name={postalCode}
+              onChange={postalCodeHandler}
+              color="cyan"
+              htmlFor="postalCode"
+              type="text"
+            />
+          </div>
+
+          <div className="w-full md:w-1/3 px-3">
+          <InputField
+              label={text("userSettingsCity")}
+              name={city}
+              onChange={cityHandler}
+              color="gray-700"
+              htmlFor="city"
+              type="text"
+            />
+          </div>
+
+          <div className="w-full md:w-1/3 px-3">
+          <InputField
+              label={text("userSettingsCountry")}
+              name={country}
+              onChange={countryHandler}
+              color="cyan"
+              htmlFor="country"
+              type="text"
             />
           </div>
         </div>

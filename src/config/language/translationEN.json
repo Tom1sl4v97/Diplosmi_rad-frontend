@@ -47,6 +47,12 @@
   "de": "German",
   "author": "Author",
   "publishedAt": "Published",
+
+  "userSettingsCity": "City",
+  "userSettingsCountry": "Country",
+  "userSettingsAdress": "Adress",
+  "userSettingsPostalCode": "Postal Code",
+
   "userMenuOpenProfile": "Open Profile",
   "userMenuYourProfile": "Your Profile",
   "userMenuSettings": "Settings",
@@ -96,7 +102,26 @@
   "pageSettingsSaveNewModerator": "Save new moderator",
   "pageSettingsSuccessNewModerator": "New moderator successfully saved",
 
+  "userShoppingHistoryCSS": "Shopping History",
   "userShoppingHistory": "Shopping history",
+  "userShoppingHistoryLestOrders": "List of orders",
+  "userShoppingHistoryEmpty": "Shopping history is empty",
+  "userShoppingHistoryOrderNumber": "Order number",
+  "userShoppingHistoryOrderDate": "Order date",
+  "userShoppingHistoryOrderTotalPrice": "Total price",
+  "userShoppingHistoryOrderReciverName": "Reciver name",
+  "userShoppingHistoryOrderShowOrder": "Show order",
+  "userShoppingHistoryOrderCancelOrder": "Cancel order",
+
+  "userShoppingHistoryItemName": "Name",
+  "userShoppingHistoryItemSku": "SKU",
+  "userShoppingHistoryItemPrice": "Price",
+  "userShoppingHistoryItemQuantity": "Quantity",
+  "userShoppingHistoryItemTotalPrice": "Total price",
+
+  "shopPage": "Shop",
+  "shopPageYourCartCSS": "Your Cart",
+  "shopPageYourCart": "Your cart",
 
   "usersSettings": "Users Settings",
   "pagesSettings": "Pages Settings",

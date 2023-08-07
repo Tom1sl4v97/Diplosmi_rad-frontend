@@ -47,6 +47,12 @@
   "de": "Deutsch",
   "author": "Autor",
   "publishedAt": "Veröffentlicht",
+
+  "userSettingsCity": "Stadt",
+  "userSettingsCountry": "Land",
+  "userSettingsAdress": "Adresse",
+  "userSettingsPostalCode": "Postleitzahl",
+
   "userMenuOpenProfile": "Profil öffnen",
   "userMenuYourProfile": "Ihr Profil",
   "userMenuSettings": "Einstellungen",
@@ -95,7 +101,26 @@
   "pageSettingsSaveNewModerator": "Neuen Moderator speichern",
   "pageSettingsSuccessNewModerator": "Neuer Moderator erfolgreich gespeichert",
 
-  "userShoppingHistory": "Kauf Historie",
+  "userShoppingHistoryCSS": "Kauf Historie",
+  "userShoppingHistory": "Kauf historie",
+  "userShoppingHistoryLestOrders": "Letzte Bestellungen",
+  "userShoppingHistoryEmpty": "Kauf historie ist leer",
+  "userShoppingHistoryOrderNumber": "Bestellnummer",
+  "userShoppingHistoryOrderDate": "Bestelldatum",
+  "userShoppingHistoryOrderTotalPrice": "Gesamtpreis",
+  "userShoppingHistoryOrderReciverName": "Empfängername",
+  "userShoppingHistoryOrderShowOrder": "Bestellung anzeigen",
+  "userShoppingHistoryOrderCancelOrder": "Bestellung stornieren",
+
+  "userShoppingHistoryItemName": "Name",
+  "userShoppingHistoryItemSku": "SKU",
+  "userShoppingHistoryItemPrice": "Preis",
+  "userShoppingHistoryItemQuantity": "Menge",
+  "userShoppingHistoryItemTotalPrice": "Gesamtpreis",
+
+  "shopPage": "Shop",
+  "shopPageYourCartCSS": "Ihr Warenkorb",
+  "shopPageYourCart": "Ihr warenkorb",
 
   "usersSettings": "Benutzer Einstellungen",
   "pagesSettings": "Seiten Einstellungen",

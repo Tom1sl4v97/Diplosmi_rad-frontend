@@ -49,6 +49,11 @@
   "author": "Autor",
   "publishedAt": "Objavljeno",
 
+  "userSettingsCity": "Grad",
+  "userSettingsCountry": "Država",
+  "userSettingsAdress": "Adresa",
+  "userSettingsPostalCode": "Poštanski broj",
+
   "userMenuOpenProfile": "Otvori profil",
   "userMenuYourProfile": "Vaš profil",
   "userMenuSettings": "Postavke",
@@ -97,7 +102,35 @@
   "pageSettingsSaveNewModerator": "Spremi novog moderatora", 
   "pageSettingsSuccessNewModerator": "Novi moderator je uspješno spremljen",
 
-  "userShoppingHistory": "Povijest Kupovine",
+  "userShoppingHistoryCSS": "Povijest Kupovine",
+  "userShoppingHistory" : "Povijest kupovine",
+  "userShoppingHistoryLestOrders": "Zadnje narudžbe",
+  "userShoppingHistoryEmpty": "Povijest kupovine je prazna",
+  "userShoppingHistoryOrderNumber": "Broj narudžbe",
+  "userShoppingHistoryOrderDate": "Datum narudžbe",
+  "userShoppingHistoryOrderTotalPrice": "Ukupna cijena narudžbe",
+  "userShoppingHistoryOrderReciverName": "Ime primatelja",
+  "userShoppingHistoryOrderShowOrder": "Prikaži narudžbu",
+  "userShoppingHistoryOrderCancelOrder": "Otkaži narudžbu",
+
+  "userShoppingHistoryItemName": "Naziv proizvoda",
+  "userShoppingHistoryItemSku": "SKU",
+  "userShoppingHistoryItemPrice": "Cijena",
+  "userShoppingHistoryItemQuantity": "Količina",
+  "userShoppingHistoryItemTotalPrice": "Ukupna cijena",
+
+  "userShoppingHistoryUserCart": "Košarica korisnika",
+  "userShoppingHistorySummary": "Sažetak",
+  "userShoppingHistorySubtotal": "Međuzbroj",
+  "userShoppingHistoryDiscount": "Popust",
+  "userShoppingHistoryShipping": "Dostava",
+  "userShoppingHistoryTotal": "Ukupno",
+  "userShoppingHistoryCustomerDetails": "Podaci o kupcu",
+  "userShoppingHistoryShippingAddress": "Adresa dostave",
+  
+  "shopPage": "Trgovina",
+  "shopPageYourCartCSS": "Vaša Košarica",
+  "shopPageYourCart": "Vaša košarica",
 
   "usersSettings": "Postavke Korisnika",
   "pagesSettings": "Postavke Stranica",

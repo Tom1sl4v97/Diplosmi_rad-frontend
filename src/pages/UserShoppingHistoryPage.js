@@ -3,14 +3,14 @@ import { useTranslation } from "react-i18next";
 import Hero from "../components/userSerttingPage/Hero";
 import ShoppingHistory from "../components/userShoppingHistory/ShoppingHistory";
 
-function UserShoppingHistory(){
+function UserShoppingHistoryPage(){
     const { t: text } = useTranslation();
     return (
         <>
-            <Hero text={text("userShoppingHistory")}/>
+            <Hero text={text("userShoppingHistoryCSS")}/>
             <ShoppingHistory/>
         </>
     )
 }
 
-export default UserShoppingHistory;
+export default UserShoppingHistoryPage;

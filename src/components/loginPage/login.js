@@ -117,6 +117,10 @@ function Login() {
         lastName: null,
         phoneNumber: null,
         birthDate: null,
+        address: null,
+        city: null,
+        country: null,
+        postalCode: null,
         role: "user",
       };
     } else if (response.status === 200) {
@@ -129,6 +133,10 @@ function Login() {
         lastName: data.lastName,
         phoneNumber: data.phoneNumber,
         birthDate: data.birthDate.startDate,
+        address: data.address,
+        city: data.city,
+        country: data.country,
+        postalCode: data.postalCode,
         role: data.role,
       };
     }
