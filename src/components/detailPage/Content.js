@@ -110,15 +110,15 @@ function Content(props) {
   const Table = ({ node, children }) => {
     return (
       <>
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg mb-8">
-          <table className="w-full text-base text-left text-gray-500 dark:text-gray-400">
-            <thead className="text-base font-bold text-cyan uppercase bg-cyanLight dark:bg-gray-700 dark:text-gray-400">
+        <div className="relative overflow-x-auto shadow-md sm:rounded-3xl mb-8">
+          <table className="w-full text-xl text-left text-black">
+            <thead className="font-bold uppercase bg-cyan">
               <tr>
                 {children[0].props.children.map((item, index) => {
                   return (
                     <th
                       scope="col"
-                      className="px-6 py-3"
+                      className="pl-6 pt-3"
                       key={item.props.children + index}
                     >
                       {item.props.children}
@@ -133,7 +133,7 @@ function Content(props) {
                   return (
                     <tr
                       key={index}
-                      className="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-600 dark:hover:bg-gray-600"
+                      className="hover:bg-gray-200"
                     >
                       {item.props.children.map((item, index2) => {
                         return (

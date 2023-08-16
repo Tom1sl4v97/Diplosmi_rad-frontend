@@ -19,7 +19,7 @@ function OrderDitailCustomer(props) {
       </h3>
       <div className="flex flex-col md:flex-row xl:flex-col justify-start items-stretch h-full w-full md:space-x-6 lg:space-x-8 xl:space-x-0">
         <div className="flex flex-col justify-start items-start flex-shrink-0">
-          <div class="flex justify-center w-full md:justify-start items-center py-2">
+          <div className="flex justify-center w-full md:justify-start items-center py-2">
             <p className="text-base font-semibold pt-4 leading-4 text-left text-gray-800">
               {orderReciverName}
             </p>
@@ -30,7 +30,7 @@ function OrderDitailCustomer(props) {
               src="https://tuk-cdn.s3.amazonaws.com/can-uploader/order-summary-3-svg1.svg"
               alt="email"
             />
-            <p className="cursor-pointer text-sm leading-5 ">{orderEmail}</p>
+            <p className="text-sm">{orderEmail}</p>
           </div>
 
           <div className="flex justify-center text-gray-800 md:justify-start items-center space-x-4 py-2 w-full">
@@ -39,7 +39,7 @@ function OrderDitailCustomer(props) {
               src="https://img.icons8.com/?size=512&id=2olGSGqpqGWD&format=png"
               alt="phone"
             />
-            <p className="cursor-pointer text-sm leading-5 ">{orderPhone}</p>
+            <p className="text-sm">{orderPhone}</p>
           </div>
         </div>
         <div className="flex justify-between xl:h-full items-stretch w-full flex-col mt-6 md:mt-0 md:pl-12 xl:pl-0">

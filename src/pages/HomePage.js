@@ -1,7 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
 import { useFetchContent, useFetchFirstContent } from "../hooks/fetchContent";
 import { useTranslation } from "react-i18next";
-import { useLocalStorage, defaultPageSettings } from "../hooks/SessionStorage";
+import {
+  useLocalStorage,
+  defaultPageSettings,
+  useSessionStorage,
+  defaultSession,
+} from "../hooks/SessionStorage";
 
 import HomePageTitle from "../components/homepage/Title";
 import HomePagePrvaSlika from "../components/homepage/PrvaSlika";
@@ -10,6 +15,7 @@ import FullContent from "../components/homepage/FullContent";
 import SelectCategorys from "../components/homepage/SelectCategorys";
 import MostPopularPosts from "../components/mostPopularPosts/MostPopularPosts";
 import BestScoredPost from "../components/mostPopularPosts/BestScoredPost";
+import UserReccomendation from "../components/mostPopularPosts/UserRecommendation";
 
 const serverURL = process.env.REACT_APP_SERVER_URL;
 
@@ -20,6 +26,11 @@ function HomePage(props) {
   const [pageSettings, setPageSettings] = useLocalStorage(
     "pageSettings",
     defaultPageSettings
+  );
+
+  const [userSession, setUserSession] = useSessionStorage(
+    "userData",
+    defaultSession
   );
 
   const getPageSettings = useCallback(async () => {
@@ -114,6 +125,12 @@ function HomePage(props) {
           </h1>
 
           <BestScoredPost />
+
+          {userSession.role !== "un-register" && (
+            <>
+              <UserReccomendation />
+            </>
+          )}
         </>
       )}
     </>

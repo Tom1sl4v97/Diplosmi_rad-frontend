@@ -21,7 +21,7 @@ function UserData() {
     endDate: session.user.birthDate ?? "",
   });
 
-  const [adress, setAdress] = useState(session.user.adress ?? "");
+  const [address, setAddress] = useState(session.user.address ?? "");
   const [city, setCity] = useState(session.user.city ?? "");
   const [country, setCountry] = useState(session.user.country ?? "");
   const [postalCode, setPostalCode] = useState(session.user.postalCode ?? "");
@@ -50,8 +50,8 @@ function UserData() {
     setBirthDate(newBirthDate);
   };
 
-  const adressHandler = (event) => {
-    setAdress(event.target.value);
+  const addressHandler = (event) => {
+    setAddress(event.target.value);
   };
 
   const cityHandler = (event) => {
@@ -87,7 +87,7 @@ function UserData() {
       startDate: birthDate.startDate,
       endDate: birthDate.endDate,
     }
-    if (adress !== "") body.adress = adress;
+    if (address !== "") body.address = address;
     if (city !== "") body.city = city;
     if (country !== "") body.country = country;
     if (postalCode !== "") body.postalCode = postalCode;
@@ -122,7 +122,7 @@ function UserData() {
         phoneNumber: phoneNumber,
         username: username,
         birthDate: birthDate.startDate,
-        adress: adress,
+        address: address,
         city: city,
         country: country,
         postalCode: postalCode,
@@ -198,10 +198,10 @@ function UserData() {
           <div className="w-full px-3">
             <InputField
               label={text("userSettingsAdress")}
-              name={adress}
-              onChange={adressHandler}
+              name={address}
+              onChange={addressHandler}
               color="cyan"
-              htmlFor="adress"
+              htmlFor="address"
               type="text"
             />
           </div>

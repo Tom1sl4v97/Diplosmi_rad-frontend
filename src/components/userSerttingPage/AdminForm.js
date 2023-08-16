@@ -20,9 +20,7 @@ function AdminForm() {
   );
 
   const [error, setError] = useState(null);
-
   const [userData, setUserData] = useSessionStorage("userData", defaultSession);
-
   const [allContentDisplay, setAllContentDisplay] = useState(
     pageSettings.allContentPageSkip
   );
@@ -34,6 +32,9 @@ function AdminForm() {
   );
   const [searchComponentDisplay, setSearchComponentDisplay] = useState(
     pageSettings.searchComponentPageSkip
+  );
+    const [userReccomendationDisplay, setUserReccomendationDisplay] = useState(
+    pageSettings.userReccomendationPageSkip
   );
 
   const allContentSubmitHandler = (number) => {
@@ -52,6 +53,10 @@ function AdminForm() {
     setSearchComponentDisplay(number);
   };
 
+  const userReccomendationSubmitHandler = (number) => {
+    setUserReccomendationDisplay(number);
+  };
+
   const submitHandler = async () => {
     const url = `${serverUrl}/pageSettings`;
 
@@ -60,6 +65,7 @@ function AdminForm() {
       mostPopularPageSkip: mostPopularDisplay,
       bestScoredPageSkip: bestScoredDisplay,
       searchComponentPageSkip: searchComponentDisplay,
+      userReccomendationPageSkip: userReccomendationDisplay,
     };
 
     try {
@@ -78,6 +84,7 @@ function AdminForm() {
           mostPopularPageSkip: mostPopularDisplay,
           bestScoredPageSkip: bestScoredDisplay,
           searchComponentPageSkip: searchComponentDisplay,
+          userReccomendationPageSkip: userReccomendationDisplay,
           defaultPageSettings: false,
         });
         window.location.reload();
@@ -96,7 +103,7 @@ function AdminForm() {
         {error !== null && (
           <div className="text-red-500 text-center">{error}</div>
         )}
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           <AdminDropDown
             text={text("pageSettingsAllContentDisplay")}
             defaultValue={allContentDisplay}
@@ -119,6 +126,12 @@ function AdminForm() {
             text={text("pageSettingsSearchComponentDisplay")}
             defaultValue={searchComponentDisplay}
             changeHandler={searchComponentSubmitHandler}
+          />
+
+          <AdminDropDown
+            text={text("pageSettingsUserRecommendationsDisplay")}
+            defaultValue={userReccomendationDisplay}
+            changeHandler={userReccomendationSubmitHandler}
           />
         </div>
 

@@ -19,7 +19,7 @@ function InputFieldLevi(props) {
     case "email":
       placeholder = "Example: Jhon1995@gmail.com";
       break;
-    case "adress":
+    case "address":
       placeholder = "Example: Varaždinska ulica 5";
       break;
     case "city":

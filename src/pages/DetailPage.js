@@ -31,6 +31,18 @@ function DetailPage() {
             dateOfCreation={data[0].dateOfCreation}
           />
           <Image img={data[0].img} subTitle={data[0].subTitle} />
+
+          <div className="flex flex-row text-center w-full justify-center space-x-5 my-4">
+            {data[0].categories.map((category, index) => (
+              <div
+                key={index}
+                className="text-sm md:text-lg lg:text-xl font-serif border-2 border-cyanDark rounded-full px-4 py-1"
+              >
+                {category}
+              </div>
+            ))}
+          </div>
+
           <h2 className="text-xl md:text-2xl lg:text-3xl font-serif text-center">
             {data[0].subTitle}
           </h2>
@@ -39,7 +51,11 @@ function DetailPage() {
           {commentLoader ? (
             <LoadingCom />
           ) : (
-            <PostComments comments={commentData} postId={postID} />
+            <PostComments
+              comments={commentData}
+              postId={postID}
+              categories={data[0].categories}
+            />
           )}
         </div>
       )}

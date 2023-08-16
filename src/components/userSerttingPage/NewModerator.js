@@ -4,6 +4,7 @@ import { useSessionStorage, defaultSession } from "../../hooks/SessionStorage";
 
 import InputField from "./InputField";
 import SubmitButton from "../loginPage/SubmitButton";
+import { useAddModerator } from "../../hooks/fetchContent";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
@@ -14,6 +15,8 @@ function NewModerator() {
 
   const [userData, setUserData] = useSessionStorage("userData", defaultSession);
   const [success, setSuccess] = useState(false);
+
+  const { setEmailContentful, addModerator, errorContentful } = useAddModerator();
 
   const emailHandler = (event) => {
     setSuccess(false);
@@ -27,8 +30,6 @@ function NewModerator() {
     }
 
     setError(false);
-
-    console.log(email);
 
     const url = `${serverUrl}/newModerator`;
 
@@ -49,6 +50,9 @@ function NewModerator() {
       setError("Email is not valid");
       return;
     }
+
+    setEmailContentful(email);
+    addModerator();
 
     setSuccess(true);
     setError(false);

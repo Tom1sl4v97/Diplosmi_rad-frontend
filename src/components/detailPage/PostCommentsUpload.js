@@ -4,7 +4,7 @@ import { useState } from "react";
 import StarRating from "./StarRating";
 
 function PostCommentsUpload(props) {
-  const { userSession, postId } = props;
+  const { userSession, postId, categories } = props;
   const [rating, setRating] = useState(0);
   const { t: text } = useTranslation();
   const [error, setError] = useState(null);
@@ -35,6 +35,7 @@ function PostCommentsUpload(props) {
     const commentData = {
       rating: rating,
       comment: comment,
+      postCategory: categories,
       postId: postId,
       userName: userSession.user.username,
       email: userSession.user.email,

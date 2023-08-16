@@ -5,9 +5,10 @@ const orders = [
   {
     orderID: 1,
     orderNumber: "123456789",
+    orderStatus: "Processing",
     orderDate: "2021-08-01",
     orderReciverName: "John Doe",
-    orderSum: 86.00,
+    orderSum: 227.00,
     orderAddress: "Some address",
     orderPhone: "123456789",
     orderEmail: "some email",
@@ -54,6 +55,7 @@ const orders = [
   {
     orderID: 2,
     orderNumber: "564655248",
+    orderStatus: "Delivered",
     orderDate: "2021-08-01",
     orderReciverName: "John Doe",
     orderSum: 40.00,
@@ -84,6 +86,7 @@ const orders = [
   {
     orderID: 3,
     orderNumber: "654564654",
+    orderStatus: "Delivered",
     orderDate: "2021-08-01",
     orderReciverName: "John Doe",
     orderSum: 20.00,
@@ -142,6 +145,9 @@ function ShoppingHistory() {
                         </th>
                         <th scope="col" className="px-6 py-3">
                           {text("userShoppingHistoryOrderTotalPrice")}
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                          {text("userShoppingHistoryOrderStatus")}
                         </th>
                         <th scope="col" className="px-6 py-3">
                           <span className="sr-only">

@@ -26,11 +26,16 @@ function SinglePost(props) {
     navigate(`/detailPage/${props.item.id}`);
   };
 
+  var containerStyle = "bg-white p-6 rounded-lg shadow-lg";
+
+  if (avgScore !== null) {
+    containerStyle += " h-78";
+  } else {
+    containerStyle += " h-64";
+  }
+
   return (
-    <button
-      onClick={openContentHandler}
-      className="text-left"
-    >
+    <button onClick={openContentHandler} className="text-left">
       <div className="group wrapper antialiased text-gray-900">
         <img
           src={img}
@@ -39,7 +44,7 @@ function SinglePost(props) {
         />
 
         <div className="relative px-4 -mt-16">
-          <div className="bg-white p-6 rounded-lg shadow-lg h-64">
+          <div className={containerStyle}>
             <div
               id="categories"
               className="flex cursor-grab overflow-hidden text-sm"
@@ -66,7 +71,8 @@ function SinglePost(props) {
 
             {avgScore !== null && (
               <div className="text-md pt-2 font-bold">
-                {text("detailPageCommentsAverageScore")} {avgScore.toFixed(1)} / 5.0
+                {text("detailPageCommentsAverageScore")} {avgScore.toFixed(1)} /
+                5.0
               </div>
             )}
           </div>

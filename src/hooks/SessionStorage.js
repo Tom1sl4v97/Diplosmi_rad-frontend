@@ -15,7 +15,7 @@ function useStorage(key, defaultValue, storageObject) {
   const [value, setValue] = useState(() => {
     const jsonValue = storageObject.getItem(key);
     if (jsonValue != null) {
-      checkIfTokenExpired(JSON.parse(jsonValue));
+      //checkIfTokenExpired(JSON.parse(jsonValue));
       return JSON.parse(jsonValue);
     }
 
@@ -74,7 +74,7 @@ export function defaultSession() {
       lastName: null,
       birthDate: null,
       phoneNumber: null,
-      adress: null,
+      address: null,
       city: null,
       country: null,
       postalCode: null,
@@ -91,5 +91,12 @@ export function defaultPageSettings(){
     mostPopularPageSkip: 3,
     bestScoredPageSkip: 3,
     searchComponentPageSkip: 6,
+    userReccomendationPageSkip: 3,
+  }
+}
+
+export function defaultCommerceToolsSettings(){
+  return {
+    accessToken: null,
   }
 }

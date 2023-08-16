@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   orderID: "",
   orderNumber: "",
+  orderStatus: "",
   orderDate: "",
   orderReciverName: "",
   orderSum: null,
@@ -25,6 +26,7 @@ const userOrderSlice = createSlice({
     setUserOrder(state, action) {
       state.orderID = action.payload.orderID;
       state.orderNumber = action.payload.orderNumber;
+      state.orderStatus = action.payload.orderStatus;
       state.orderDate = action.payload.orderDate;
       state.orderReciverName = action.payload.orderReciverName;
       state.orderSum = action.payload.orderSum;

@@ -15,6 +15,7 @@ import ShopPage from "./pages/ShopPage";
 import UserCartPage from "./pages/UserCartPage";
 import UserShoppingHistoryPage from "./pages/UserShoppingHistoryPage";
 import OrderDitailPage from "./pages/OrderDitailPage";
+import ModStatisticsPage from "./pages/ModStatististicsPage";
 
 import "./app.css";
 
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: "pageSettings",
         element: <PageSettings />,
+      },
+      {
+        path: "modStatistics",
+        element: <ModStatisticsPage />,
       },
       {
         path: "shop",

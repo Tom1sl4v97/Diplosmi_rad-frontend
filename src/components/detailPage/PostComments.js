@@ -5,7 +5,7 @@ import PostCommentsUpload from "./PostCommentsUpload";
 import CommentContent from "./CommentContent";
 
 function PostComments(props) {
-  const { comments, postId } = props;
+  const { comments, postId, categories } = props;
   const { t: text } = useTranslation();
   const [userSession] = useSessionStorage("userData", defaultSession);
 
@@ -35,7 +35,7 @@ function PostComments(props) {
           </div>
 
           {loggedUser && (
-            <PostCommentsUpload userSession={userSession} postId={postId} />
+            <PostCommentsUpload userSession={userSession} postId={postId} categories={categories} />
           )}
 
           {noComments ? (

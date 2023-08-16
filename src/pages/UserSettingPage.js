@@ -1,6 +1,7 @@
+import { useTranslation } from "react-i18next";
+
 import Hero from "../components/userSerttingPage/Hero";
 import UserData from "../components/userSerttingPage/UserData";
-import { useTranslation } from "react-i18next";
 
 function UserSettingPage() {
   const { t: text } = useTranslation();

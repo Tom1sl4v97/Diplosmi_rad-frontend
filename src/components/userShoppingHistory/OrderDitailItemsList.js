@@ -30,14 +30,13 @@ function OrderDitailItemsList(props) {
             </tr>
           </thead>
           <tbody>
-            {orderList.map((item) => (
-              <tr key={item.sku} className="text-sm text-gray-800 hover:bg-gray-300">
-                <td className="px-6 py-2 whitespace-nowrap">
-                  {item.itemName}
-                </td>
-                <td className="px-6 py-2 whitespace-nowrap">
-                  {item.itemSKU}
-                </td>
+            {orderList.map((item, index) => (
+              <tr
+                key={index}
+                className="text-sm text-gray-800 hover:bg-gray-300"
+              >
+                <td className="px-6 py-2 whitespace-nowrap">{item.itemName}</td>
+                <td className="px-6 py-2 whitespace-nowrap">{item.itemSKU}</td>
                 <td className="px-6 py-2 whitespace-nowrap">
                   {item.itemPrice.toFixed(2)}€
                 </td>

@@ -145,19 +145,27 @@ function MainNavigation() {
               >
                 {text("userShoppingHistory")}
               </NavLink>
-              <a
-                href="/userSetting"
+              <NavLink
+                to="/userSetting"
                 className="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
               >
                 {text("userMenuYourProfile")}
-              </a>
+              </NavLink>
               {userData.role === "admin" && (
-                <a
-                  href="/pageSettings"
+                <NavLink
+                  to="/pageSettings"
                   className="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
                 >
                   {text("userMenuSettings")}
-                </a>
+                </NavLink>
+              )}
+              {userData.role === "moderator" && (
+                <NavLink
+                  to="/modStatistics"
+                  className="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
+                >
+                  {text("userMenuModStatistics")}
+                </NavLink>
               )}
               <a
                 href="/"
