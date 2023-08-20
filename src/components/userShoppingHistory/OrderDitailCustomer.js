@@ -1,7 +1,9 @@
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 function OrderDitailCustomer(props) {
   const { t: text } = useTranslation();
+  const navigate = useNavigate();
   const {
     orderReciverName,
     orderAddress,
@@ -10,7 +12,14 @@ function OrderDitailCustomer(props) {
     orderPostCode,
     orderPhone,
     orderEmail,
+    userDateIsSet = false,
+    editUserDate = false,
+    orderNewHandler,
   } = props;
+
+  const changeDestinationDataHandler = () => {
+    navigate("/userSetting");
+  };
 
   return (
     <>
@@ -62,6 +71,36 @@ function OrderDitailCustomer(props) {
                   {text("userSettingsPostalCode")}: {orderPostCode}
                 </p>
               </div>
+
+              {userDateIsSet && (
+                <p className="text-lg text-rose-700">
+                  {text("shopCheckoutPageDestinationDataAreWrongOrEmpty")}
+                </p>
+              )}
+
+              {editUserDate && (
+                <button
+                  type="button"
+                  className="h-full w-full px-3 py-2 inline-block rounded-2xl bg-cyanLight text-sm font-medium text-gray-700 shadow-2xl transition duration-300 ease-in-out hover:text-white hover:bg-cyanDark"
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
+                  onClick={changeDestinationDataHandler}
+                >
+                  {text("shopCheckoutPageChangeDestinationData")}
+                </button>
+              )}
+              {editUserDate && (
+                <button
+                  className={
+                    "w-full bg-cyanDark font-bold rounded-full transition duration-300 hover:bg-cyan py-2 px-8 text-md text-white uppercase" +
+                    (userDateIsSet ? " opacity-50 cursor-not-allowed" : "")
+                  }
+                  disabled={userDateIsSet}
+                  onClick={orderNewHandler}
+                >
+                  {text("shopPageCheckout")}
+                </button>
+              )}
             </div>
           </div>
         </div>

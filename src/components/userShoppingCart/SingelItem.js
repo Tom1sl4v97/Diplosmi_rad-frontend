@@ -14,40 +14,45 @@ function SingleItem(props) {
   const onAddQuantityHandler = () => {
     if (quantity === item.quantity) return;
     setQuantity((prevQuantity) => prevQuantity + 1);
-    addTotalItems(item.price);
+    addTotalItems(item.price, item.id, item.variantId);
   };
 
   const onRemoveQuantityHandler = () => {
     if (quantity === 0) return;
     setQuantity((prevQuantity) => prevQuantity - 1);
-    removeTotalItems(item.price);
+    removeTotalItems(item.price, item.id, item.variantId);
   };
 
   const remuveHandler = () => {
-    onChangeTotalItems(item.price, -quantity);
+    onChangeTotalItems(item.price, -quantity, item.id, item.variantId);
     setQuantity(0);
-    onRemoveItemHandler(item.id);
+    onRemoveItemHandler(item.id, item.variantId);
   };
 
   const onChangeInputHandler = (event) => {
     if (+event.target.value > item.quantity) {
       setQuantity(item.quantity);
-      onChangeTotalItems(item.price, item.quantity - quantity);
+      onChangeTotalItems(
+        item.price,
+        item.quantity - quantity,
+        item.id,
+        item.variantId
+      );
       return;
     }
     if (+event.target.value < 1) {
       setQuantity(1);
-      onChangeTotalItems(item.price, 1 - quantity);
+      onChangeTotalItems(item.price, 1 - quantity, item.id, item.variantId);
       return;
     }
     const newQuantity = +event.target.value;
     const quantityDifference = newQuantity - quantity;
     setQuantity(newQuantity);
-    onChangeTotalItems(item.price, quantityDifference);
+    onChangeTotalItems(item.price, quantityDifference, item.id, item.variantId);
   };
 
   return (
-    <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+    <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5 overflow-auto">
       <div className="flex w-2/5">
         <div className="w-20">
           <img
@@ -76,7 +81,7 @@ function SingleItem(props) {
         </button>
 
         <input
-          className="mx-2 border text-center w-8"
+          className="mx-2 border text-center w-16"
           type="text"
           value={quantity}
           onChange={onChangeInputHandler}

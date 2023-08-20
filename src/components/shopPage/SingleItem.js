@@ -5,15 +5,18 @@ import {
   useLocalStorage,
 } from "../../hooks/SessionStorage";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { productDetailActions } from "../../store/ProductDetail";
 
 function SingleItem(props) {
   const { t: text } = useTranslation();
   const [userData] = useSessionStorage("userData", defaultSession);
   const [userCart, setUserCart] = useLocalStorage("userCart", []);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { item, position } = props;
 
-  const buyNowButtonHover = () => {
+  const buyNowButtonHandler = () => {
     if (userData.role === "un-register") {
       navigate("/login", { replace: true });
     } else {
@@ -40,13 +43,21 @@ function SingleItem(props) {
     }
   };
 
+  const openDetailHandler = () => {
+    dispatch(productDetailActions.setProductDetail(item));
+    const name = item.name.replace(/\s/g, "");
+    navigate(`/shop/shopDetail/${name}`);
+  };
+
   const pictureDisplay = (
     <div>
-      <img
-        src={item.imageUrl}
-        className="w-full rounded-lg shadow-lg dark:shadow-black/20"
-        alt={item.name}
-      />
+      <a onClick={openDetailHandler} className="cursor-pointer">
+        <img
+          src={item.imageUrl}
+          className="w-full rounded-lg shadow-lg dark:shadow-black/20"
+          alt={item.name}
+        />
+      </a>
     </div>
   );
 
@@ -62,24 +73,26 @@ function SingleItem(props) {
   const itemDataDisplay = (
     <div>
       <div className={itemCSS}>
-        <h2 className="mb-6 pb-2 text-4xl font-bold">{item.name}</h2>
-        <p className="mb-6 pb-2 text-neutral-500 dark:text-neutral-300">
-          {item.description}
-        </p>
-        <div className="mb-6 flex flex-wrap">
-          {item.category.map((category, index) => (
-            <span
-              key={index}
-              className="inline-block rounded-full bg-cyanLight px-3 py-1 text-sm uppercase font-bold text-gray-700 mr-2 mb-2"
-            >
-              {category}
-            </span>
-          ))}
-        </div>
+        <a onClick={openDetailHandler} className="cursor-pointer">
+          <h2 className="mb-6 pb-2 text-4xl font-bold">{item.name}</h2>
+          <p className="mb-6 pb-2 text-neutral-500 dark:text-neutral-300">
+            {item.description}
+          </p>
+          <div className="mb-6 flex flex-wrap">
+            {item.category.map((category, index) => (
+              <span
+                key={index}
+                className="inline-block rounded-full bg-cyanLight px-3 py-1 text-sm uppercase font-bold text-gray-700 mr-2 mb-2"
+              >
+                {category}
+              </span>
+            ))}
+          </div>
+        </a>
         <div className="flex flex-row">
           <div className="flex flex-col mr-10">
             <span className="text-2xl font-bold text-gray-700 mb-2">
-              {item.price}$
+              {item.price}€
             </span>
             <span className="text-md text-black">{text("shopPagePrice")}</span>
           </div>
@@ -88,7 +101,7 @@ function SingleItem(props) {
             className="inline-block rounded-2xl bg-cyan px-4 text-xl font-bold uppercase text-white shadow-2xl transition duration-300 ease-in-out hover:bg-cyanDark"
             data-te-ripple-init
             data-te-ripple-color="light"
-            onClick={buyNowButtonHover}
+            onClick={buyNowButtonHandler}
           >
             {text("shopPageBuyNow")}
           </button>

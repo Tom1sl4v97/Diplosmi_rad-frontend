@@ -33,11 +33,15 @@ function OrderDitailPage() {
                   <OrderDitailItemsList orderList={orderData.orderList} />
                 </div>
 
+
                 <OrderDitailItemSummery
                   orderSum={orderData.orderSum}
                   orderDiscount={orderData.orderDiscount}
                   orderDiscountName={orderData.orderDiscountName}
+                  orderShippingName={orderData.orderShippingName}
+                  orderShippingDescription={orderData.orderShippingDescription}
                   orderShipping={orderData.orderShipping}
+
                 />
               </div>
               <div className="bg-gray-50 dark:bg-gray-800 w-full xl:w-96 flex justify-between items-center md:items-start px-4 py-6 md:p-6 xl:p-8 flex-col">

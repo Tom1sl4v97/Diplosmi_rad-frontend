@@ -118,6 +118,12 @@
   "userShoppingHistoryOrderStatus": "Status narudžbe",
   "userShoppingHistoryOrderShowOrder": "Prikaži narudžbu",
   "userShoppingHistoryOrderCancelOrder": "Otkaži narudžbu",
+  "userShoppingHistoryOrderDelivered": "Dostavljeno",
+  "userShoppingHistoryOrderDelivering": "Dostavlja se",
+  "userShoppingHistoryOrderRedyAndSend": "Spremno za slanje",
+  "userShoppingHistoryOrderListOfAllOrders": "Lista svih narudžbi",
+  
+  
 
   "userShoppingHistoryItemName": "Naziv proizvoda",
   "userShoppingHistoryItemSku": "SKU",
@@ -151,6 +157,35 @@
   "shopPageTotal": "Ukupno",
   "shopPageYourCartIsEmpty": "Vaša košarica je prazna",
   "shopPageRemove": "Ukloni",
+
+  "shopDetailPageProductName": "Naziv proizvoda",
+  "shopDetailPageProductVarients": "Varijante proizvoda",
+  "shopDetailPageNotEnoughPieces": "Nema dovoljno komada",
+  "shopDetailPageQuantityToBuy": "Količina za kupnju",
+  "shopDetailPageWrongQuantity": "Pogrešna količina",
+  "shopDetailPageAddToCart": "Dodaj u košaricu",
+  "shopDetailPageProductDetails": "Detalji proizvoda",
+  "shopDetailPageDetailName": "Naziv",
+  "shopDetailPageDetailValue": "Vrijednost",
+  "shopDetailPageDetailValueTrue": "Da",
+  "shopDetailPageDetailValueFalse": "Ne",
+
+  "shopCheckoutPageNewOrder": "Nova narudžba",
+  "shopCheckoutPageChangeDestinationData": "Promijeni podatke o dostavi",
+  "shopCheckoutPageDestinationDataAreWrongOrEmpty": "Podaci o dostavi su prazni ili pogrešni",
+  "shopCheckoutPageFreeAbove": "Besplatna dostava iznad",
+  "shopCheckoutPageChoosePaymentMethod": "Odaberite način plaćanja",
+
+  "shopDetailProductReviewProductReviews": "Recenzije proizvoda",
+  "shopDetailProductReviewProductReviewsEmpty": "Nema recenzija proizvoda",
+  "shopDetailProductReviewProductReviewsAdd": "Dodaj recenziju",
+  "shopDetailProductReviewProductReviewsWriteReviewTitle": "Naslov recenzije",
+  "shopDetailProductReviewProductReviewsRateProduct": "Ocijeni proizvod",
+  "shopDetailProductReviewProductReviewsWriteReview": "Napiši recenziju",
+  "shopDetailProductReviewProductReviewsPostReview": "Objavi recenziju",
+  "shopDetailProductReviewRemoveReview": "Ukloni recenziju",
+  "shopDetailProductReviewProductReviewsPleaseFillAtLeastOneField": "Barem jedno polje od naslova, ocjene i recenzije mora biti popunjeno",
+  "detailPageCommentsReviews": "Recenzija/e",
 
   "moderatorPostTitle": "Naslov članka",
   "moderatorPostCategory": "Kategorija članka",

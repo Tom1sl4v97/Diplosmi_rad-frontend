@@ -1,29 +1,22 @@
-import { useTranslation } from "react-i18next";
 import {
   useFetchCategories,
   useFetchProductFromCommerceTools,
   useFetchProductGetAccessToken,
 } from "../hooks/fetchProductCommTol";
-import { useSessionStorage } from "../hooks/SessionStorage";
 
 import LoadingCom from "../components/pomocno/LoadingCom";
 import ShopContent from "../components/shopPage/ShopContent";
 import ShopTitle from "../components/shopPage/ShopTitle";
 
-function ShopPage() {
-  const { t: text } = useTranslation();
+const commercetoolsAuthClientId = process.env.REACT_APP_COMMERCETOOLS_CLIENT_ID;
+const commercetoolsAuthClientSecret =
+  process.env.REACT_APP_COMMERCETOOLS_SECRET;
 
-  const accessToken = useFetchProductGetAccessToken();
-  const {
-    products,
-    loading: productLoading,
-    expired,
-  } = useFetchProductFromCommerceTools(accessToken);
-  const { categories, loading: categoriesLoader } =
-    useFetchCategories(accessToken);
-  const [commercetoolsStorage] = useSessionStorage("commercetoolsStorage", {
-    accessToken: null,
-  });
+function ShopPage() {
+  const accessToken = useFetchProductGetAccessToken(commercetoolsAuthClientId, commercetoolsAuthClientSecret);
+  const { products, loading: productLoading } =
+    useFetchProductFromCommerceTools(accessToken);
+  const { categories } = useFetchCategories(accessToken);
 
   return (
     <div>

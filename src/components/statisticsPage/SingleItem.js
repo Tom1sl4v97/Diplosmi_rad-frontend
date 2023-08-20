@@ -6,12 +6,7 @@ function SingleItem(props) {
   const { t: text } = useTranslation();
   const { data } = props;
 
-  // format date from 2023-05-09T00:00+02:00 to 2023-05-09
   const date = data.dateOfCreation.split("T")[0];
-
-  console.log(data);
-
-  // need avg rating score from data.comments array
 
   const avgRating = () => {
     let sum = 0;
@@ -25,14 +20,13 @@ function SingleItem(props) {
     setToogleComments((prev) => !prev);
   };
 
-  var baseButtonStyle= (
-    "font-medium text-black rounded-full px-4 py-2 transition duration-300"
-  )
+  var baseButtonStyle =
+    "font-medium text-black rounded-full px-4 py-2 transition duration-300";
 
-  if(data.comments.length === 0) {
-    baseButtonStyle += " bg-gray-300 cursor-not-allowed"
+  if (data.comments.length === 0) {
+    baseButtonStyle += " bg-gray-300 cursor-not-allowed";
   } else {
-    baseButtonStyle += " bg-cyanLight hover:bg-cyan"
+    baseButtonStyle += " bg-cyanLight hover:bg-cyan";
   }
 
   return (
@@ -64,17 +58,19 @@ function SingleItem(props) {
         </button>
         {toogleComments && (
           <div className="mt-[-6px] ml-[-700px] w-[800px] absolute bg-white divide-y divide-gray-100 rounded-lg shadow text-left border-1 border-cyanDark">
-            {data.comments.map((comment) => {
-              return (
-                <table className="w-full">
-                  <tr className="hover:bg-gray-100">
-                    <td className="px-6 py-4 w-[33%]">{comment.email}</td>
-                    <td className="px-6 py-4 w-[7%]">{comment.rating}</td>
-                    <td className="px-6 py-4 w-[60%]">{comment.comment}</td>
-                  </tr>
-                </table>
-              );
-            })}
+            <table className="w-full">
+              <tbody>
+                {data.comments.map((comment, index) => {
+                  return (
+                    <tr className="hover:bg-gray-100" key={index}>
+                      <td className="px-6 py-4 w-[33%]">{comment.email}</td>
+                      <td className="px-6 py-4 w-[7%]">{comment.rating}</td>
+                      <td className="px-6 py-4 w-[60%]">{comment.comment}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         )}
       </td>

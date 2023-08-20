@@ -15,6 +15,8 @@ const initialState = {
   orderPostCode: "",
   orderDiscount: "",
   orderDiscountName: "",
+  orderShippingName: "",
+  orderShippingDescription: "",
   orderShipping: null,
   orderList: [],
 };
@@ -38,6 +40,8 @@ const userOrderSlice = createSlice({
       state.orderPostCode = action.payload.orderPostCode;
       state.orderDiscount = action.payload.orderDiscount;
       state.orderDiscountName = action.payload.orderDiscountName;
+      state.orderShippingName = action.payload.orderShippingName;
+      state.orderShippingDescription = action.payload.orderShippingDescription;
       state.orderShipping = action.payload.orderShipping;
       state.orderList = action.payload.orderList;
     },

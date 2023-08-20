@@ -6,6 +6,7 @@ module.exports = {
     "./src/pages/*.{js,jsx}",
     "./src/utils/*.{js,jsx}",
     "./node_modules/react-tailwindcss-datepicker/dist/index.esm.js",
+    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
     screens: {
@@ -39,6 +40,8 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ],
   darkMode: "",
 };

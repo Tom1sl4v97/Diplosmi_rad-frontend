@@ -10,6 +10,8 @@ import PageNotFound from "./pages/PageNotFound";
 import UserSettingPage from "./pages/UserSettingPage";
 import SearchedContentPage from "./pages/SearchedContentPage";
 import PageSettings from "./pages/PageSettings";
+import ShopDetailPage from "./pages/ShopDetailPage";
+import CheckOutOrder from "./pages/CheckOutOrder";
 
 import ShopPage from "./pages/ShopPage";
 import UserCartPage from "./pages/UserCartPage";
@@ -70,8 +72,16 @@ const router = createBrowserRouter([
             element: <ShopPage />,
           },
           {
+            path: "shopDetail/:productName",
+            element: <ShopDetailPage />,
+          },
+          {
             path: "userCart",
             element: <UserCartPage />,
+          },
+          {
+            path: "checkOutOrder",
+            element: <CheckOutOrder />,
           },
           {
             path: "userShoppingHistory",

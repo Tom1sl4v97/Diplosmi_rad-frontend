@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSessionStorage } from "../../hooks/SessionStorage";
 import { auth } from "../../config/Firebase";
@@ -79,12 +79,6 @@ function MainNavigation() {
       >
         {text("shopPage")}
       </NavLink>
-      <NavLink
-        to="/trecaStranica"
-        className={({ isActive }) => (isActive ? aktivniStilovi : stilovi)}
-      >
-        Treća stranica
-      </NavLink>
     </>
   );
 
@@ -101,16 +95,16 @@ function MainNavigation() {
 
   const dijeloviUlogiranogKorisnika = (
     <>
-      <div className="inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-        <Menu as="div" className="relative ml-3">
+      <div className="flex items-center pr-2 sm:static sm:inset-auto">
+        <Menu as="div" className="relative">
           <div>
             <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
               <img
-                className="h-12 w-12 rounded-full"
+                className="h-12 w-12 rounded-full hidden lg:block"
                 src={userImage}
                 alt={user.username}
               />
-              <div className="lg:hidden font-bold text-white pl-2 pr-6 py-3 text-lg">
+              <div className="lg:hidden font-bold text-white text-lg py-2 px-4">
                 {text("userMenuOpenProfile")}
               </div>
             </Menu.Button>

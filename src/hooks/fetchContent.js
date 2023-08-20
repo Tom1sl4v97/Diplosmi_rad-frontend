@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { createClient } from "contentful";
-import { createClient as createManagementClient } from "contentful-management";
 import { useSessionStorage } from "../hooks/SessionStorage";
 
 const client = createClient({
@@ -485,21 +484,18 @@ export function useAddModerator() {
           accessToken: process.env.REACT_APP_ACCESS_TOKEN_MANAGEMENT,
         });
 
-        const response = await client2.post(
-          `/spaces/${spaceId}/users`,
-          {
-            email: email,
-            roles: [
-              {
-                sys: {
-                  type: "Link",
-                  linkType: "Role",
-                  id: "3Z6JN0JG9J5Zc4j5JWQ8v7",
-                },
+        const response = await client2.post(`/spaces/${spaceId}/users`, {
+          email: email,
+          roles: [
+            {
+              sys: {
+                type: "Link",
+                linkType: "Role",
+                id: "3Z6JN0JG9J5Zc4j5JWQ8v7",
               },
-            ],
-          }
-        );
+            },
+          ],
+        });
 
         setError(null);
 
@@ -516,4 +512,87 @@ export function useAddModerator() {
     addModerator,
     errorContentful: error,
   };
+}
+
+export function useFetchUserOrdersList(email, tokenKey, skip, limit) {
+  const [loading, setLoading] = useState(true);
+  const [userOrdersList, setUserOrdersList] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
+
+  useEffect(() => {
+    getUserOrdersList(email, tokenKey, limit, skip).then((data) => {
+      setUserOrdersList(data.userOrdersData);
+      setTotalCount(data.totalOrders);
+      setLoading(false);
+    });
+  }, [email, tokenKey, skip, limit]);
+
+  return { loadingData: loading, userOrdersList, totalCount };
+}
+
+async function getUserOrdersList(email, tokenKey, limit, skip) {
+  const url = `${serverURL}/order?userEmail=${email}&limit=${limit}&skip=${skip}`;
+
+  try {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${tokenKey}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.log("Error fetching user orders:", error);
+    return [];
+  }
+}
+
+export function useFetchOrderList(limit, skip, tokenKey) {
+  const [loading, setLoading] = useState(true);
+  const [orderList, setOrderList] = useState([]);
+  const [error, setError] = useState(null);
+  const [totalCount, setTotalCount] = useState(0);
+
+  useEffect(() => {
+    getOrderList(skip, limit, tokenKey).then((data) => {
+      setOrderList(data.ordersList);
+      setTotalCount(data.totalOrders);
+      setLoading(false);
+    });
+  }, [skip, limit]);
+
+  return { loadingData: loading, orderList, error, totalCount };
+}
+
+async function getOrderList(skip, limit, tokenKey) {
+  const url = `${serverURL}/allOrders?skip=${skip}&limit=${limit}`;
+
+  try {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${tokenKey}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.log("Error fetching order list:", error);
+    return [];
+  }
 }
