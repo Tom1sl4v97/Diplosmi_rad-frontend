@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 function Footer() {
   const { t: text } = useTranslation();
   return (
-    <footer className="py-8 bg-veryDarkViolet rounded-t-3xl">
+    <footer className="py-8 bg-veryDarkViolet rounded-t-3xl print:hidden">
       <p className="text-center text-white">{text("poweredBy")}:</p>
       <div className="container pt-9 flex flex-row justify-center">
         <div className="mb-9 flex flex-col justify-center">

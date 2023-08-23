@@ -121,6 +121,7 @@
   "userShoppingHistoryOrderDelivering": "Lieferung",
   "userShoppingHistoryOrderRedyAndSend": "Bereit und senden",
   "userShoppingHistoryOrderListOfAllOrders": "Liste aller Bestellungen",
+  "userShoppingHistoryOrderPrintOrder": "Bestellung drucken",
 
   "userShoppingHistoryItemName": "Name",
   "userShoppingHistoryItemSku": "SKU",

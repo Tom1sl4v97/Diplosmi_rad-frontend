@@ -5,12 +5,12 @@ function OrderDitailItemsList(props) {
   const orderList = props.orderList;
   return (
     <>
-      <p className="text-lg md:text-xl lg:text-2xl font-semibold leading-6 xl:leading-5 text-gray-800 mb-8">
+      <p className="text-lg md:text-xl lg:text-2xl font-semibold leading-6 xl:leading-5 text-gray-800 mb-8 print:text-base">
         {text("userShoppingHistoryUserCart")}:
       </p>
       <div className="relative overflow-x-auto shadow-md rounded-3xl w-full">
         <table className="w-full text-sm text-left text-gray-500">
-          <thead className="text-base text-white uppercase bg-cyanDark">
+          <thead className="text-base text-white uppercase bg-cyanDark print:text-xs print:font-thin">
             <tr>
               <th scope="col" className="px-6 py-3">
                 {text("userShoppingHistoryItemName")}

@@ -3,7 +3,7 @@ import { useSessionStorage } from "../../hooks/SessionStorage";
 import SearchComponent from "./SearchComponent";
 
 function LanguageComponent(props) {
-  const { t: text, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const [languageStorage, setLanguageStorage] = useSessionStorage(
     "language",
     "en-US"
@@ -12,17 +12,17 @@ function LanguageComponent(props) {
   const lngs = [
     {
       code: "en-US",
-      native: text("en"),
+      native: "English",
       link: "https://img.icons8.com/?size=512&id=t3NE3BsOAQwq&format=png",
     },
     {
       code: "hr",
-      native: text("cro"),
+      native: "Hrvatski",
       link: "https://img.icons8.com/?size=512&id=vA8EHSmuIeHt&format=png",
     },
     {
       code: "de",
-      native: text("de"),
+      native: "Deutsch",
       link: "https://img.icons8.com/?size=512&id=hTMPE6ntTofO&format=png",
     },
   ];

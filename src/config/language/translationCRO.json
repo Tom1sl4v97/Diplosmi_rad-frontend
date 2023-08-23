@@ -122,9 +122,8 @@
   "userShoppingHistoryOrderDelivering": "Dostavlja se",
   "userShoppingHistoryOrderRedyAndSend": "Spremno za slanje",
   "userShoppingHistoryOrderListOfAllOrders": "Lista svih narudžbi",
+  "userShoppingHistoryOrderPrintOrder": "Ispis narudžbe",
   
-  
-
   "userShoppingHistoryItemName": "Naziv proizvoda",
   "userShoppingHistoryItemSku": "SKU",
   "userShoppingHistoryItemPrice": "Cijena",

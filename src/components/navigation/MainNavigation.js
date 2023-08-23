@@ -180,8 +180,8 @@ function MainNavigation() {
   };
 
   return (
-    <div className="flex-row">
-      <nav className="relative container mx-auto p-6 text-xl">
+    <div className="flex-row print:hidden">
+      <nav className="relative container mx-auto p-6 text-xl ">
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-20">
             <img src={logo} alt="" className="h-10" />
