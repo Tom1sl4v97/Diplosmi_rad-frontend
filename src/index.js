@@ -6,7 +6,7 @@ import "./i18n";
 
 import "./index.css";
 import App from "./App";
-import store from "./store/Index";
+import store from "./store/index";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
