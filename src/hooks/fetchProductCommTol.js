@@ -3,27 +3,26 @@ import { useState, useEffect } from "react";
 const commercetollsUrl = process.env.REACT_APP_COMMERCETOOLS_URL;
 const commercetoolsAuthUrl = process.env.REACT_APP_COMMERCETOOLS_AUTH_URL;
 
-export function useFetchProductFromCommerceTools(accessToken) {
+export function useFetchProductFromCommerceTools(accessToken, limit, skip) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [expired, setExpired] = useState(false);
+  const [totalCount, setTotalCount] = useState(0);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${commercetollsUrl}/products`, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
+        const response = await fetch(
+          `${commercetollsUrl}/products?limit=${limit}&offset=${skip}`,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        );
 
         const data = await response.json();
 
-        if (data.statusCode === 401) {
-          setExpired(true);
-          return;
-        }
-
+        setTotalCount(data.total);
         setProducts(data.results);
         setLoading(false);
       } catch (error) {
@@ -33,17 +32,19 @@ export function useFetchProductFromCommerceTools(accessToken) {
     };
 
     if (accessToken !== null) fetchProducts();
-  }, [accessToken]);
+  }, [accessToken, limit, skip]);
 
-  return { products, loading, expired };
+  return { products, loading, totalCount };
 }
 
-export function useFetchProductFromCommerceToolsByCategoryList(accessToken, categoryList) {
+export function useFetchProductFromCommerceToolsByCategoryList(
+  accessToken,
+  categoryList
+) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [expired, setExpired] = useState(false);
 
-  // need to get product thet have category in categoryList
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -270,7 +271,8 @@ export function useRemoveReview(accessToken, reviewId, version) {
   const [success, setSuccess] = useState(false);
 
   const removeReviewHandler = async () => {
-    const url = commercetollsUrl + "/reviews/" + reviewId + "?version=" + version;
+    const url =
+      commercetollsUrl + "/reviews/" + reviewId + "?version=" + version;
 
     console.log("accessToken", accessToken);
     console.log("review", reviewId);

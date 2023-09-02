@@ -26,14 +26,6 @@
 
 /* Detail page for image styling */
 
-.center-wrapper {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-}
-
 .image-wrapper {
   width: 820px;
   height: 480px;
@@ -41,7 +33,7 @@
   margin: auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 976px) {
   .image-wrapper {
     width: 300px;
     height: 200px;

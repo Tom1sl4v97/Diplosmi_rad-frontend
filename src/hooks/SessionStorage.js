@@ -92,6 +92,7 @@ export function defaultPageSettings(){
     bestScoredPageSkip: 3,
     searchComponentPageSkip: 6,
     userReccomendationPageSkip: 3,
+    shopAppPaginationSkip: 4,
   }
 }
 
