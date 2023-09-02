@@ -16,7 +16,7 @@ function HomePagePrvaSika(props) {
             <img
               src={img}
               alt=""
-              className="w-full h-auto duration-200 group-hover:scale-110"
+              className="w-full h-[640px] duration-200 group-hover:scale-110 object-cover"
             />
             <div className="absolute top-0 bottom-0 right-0 left-0 bg-gradient-to-b from-transparent to-gray-800 group-hover:from-gray-50 group-hover:to-white group-hover:opacity-40"></div>
             <div className="text-white font-bold tracking-widest px-10">

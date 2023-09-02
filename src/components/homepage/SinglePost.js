@@ -31,7 +31,7 @@ function SinglePost(props) {
   if (avgScore !== null) {
     containerStyle += " h-78";
   } else {
-    containerStyle += " h-64";
+    containerStyle += " h-52 lg:h-64 xl:h-52";
   }
 
   return (

@@ -1,9 +1,19 @@
 import { useSessionStorage } from "../../hooks/SessionStorage";
 
+import Pagination from "../navigation/Pagination";
 import SingleItem from "./SingleItem";
 
 function ShopContent(props) {
-  const { productList, categories } = props;
+  const {
+    productList,
+    categories,
+    nextPage,
+    prevPage,
+    goToPage,
+    currentPage,
+    totalCount,
+    skipPage,
+  } = props;
   const [languageStorage] = useSessionStorage("language", "en-US");
 
   //Dohvaća ime kategorije na temelju id-a
@@ -17,7 +27,6 @@ function ShopContent(props) {
 
   //Generira objekt za svaki proizvod koji se prikazuje na stranici
   const generateProductObject = (productData) => {
-
     const productId = productData.id;
     const categoryIds = productData.masterData.current.categories.map(
       (category) => category.id
@@ -113,6 +122,14 @@ function ShopContent(props) {
       {dynamicProductObjects.map((product, index) => (
         <SingleItem key={index} item={product} position={index % 2} />
       ))}
+      <Pagination
+        prevPage={prevPage}
+        nextPage={nextPage}
+        currentPage={currentPage}
+        totalCount={totalCount}
+        skipPage={skipPage}
+        goToPage={goToPage}
+      />
     </div>
   );
 }

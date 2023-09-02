@@ -33,8 +33,11 @@ function AdminForm() {
   const [searchComponentDisplay, setSearchComponentDisplay] = useState(
     pageSettings.searchComponentPageSkip
   );
-    const [userReccomendationDisplay, setUserReccomendationDisplay] = useState(
+  const [userReccomendationDisplay, setUserReccomendationDisplay] = useState(
     pageSettings.userReccomendationPageSkip
+  );
+  const [shopAppDisplay, setShopAppDisplay] = useState(
+    pageSettings.shopAppPaginationSkip
   );
 
   const allContentSubmitHandler = (number) => {
@@ -57,6 +60,10 @@ function AdminForm() {
     setUserReccomendationDisplay(number);
   };
 
+  const shopAppSubmitHandler = (number) => {
+    setShopAppDisplay(number);
+  };
+
   const submitHandler = async () => {
     const url = `${serverUrl}/pageSettings`;
 
@@ -66,6 +73,7 @@ function AdminForm() {
       bestScoredPageSkip: bestScoredDisplay,
       searchComponentPageSkip: searchComponentDisplay,
       userReccomendationPageSkip: userReccomendationDisplay,
+      shopAppPaginationSkip: shopAppDisplay,
     };
 
     try {
@@ -85,6 +93,7 @@ function AdminForm() {
           bestScoredPageSkip: bestScoredDisplay,
           searchComponentPageSkip: searchComponentDisplay,
           userReccomendationPageSkip: userReccomendationDisplay,
+          shopAppPaginationSkip: shopAppDisplay,
           defaultPageSettings: false,
         });
         window.location.reload();
@@ -132,6 +141,12 @@ function AdminForm() {
             text={text("pageSettingsUserRecommendationsDisplay")}
             defaultValue={userReccomendationDisplay}
             changeHandler={userReccomendationSubmitHandler}
+          />
+
+          <AdminDropDown
+            text={text("pageSettingsShopAppDisplay")}
+            defaultValue={shopAppDisplay}
+            changeHandler={shopAppSubmitHandler}
           />
         </div>
 
