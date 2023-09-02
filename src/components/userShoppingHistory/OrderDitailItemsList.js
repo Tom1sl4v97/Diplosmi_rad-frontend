@@ -33,7 +33,7 @@ function OrderDitailItemsList(props) {
             {orderList.map((item, index) => (
               <tr
                 key={index}
-                className="text-sm text-gray-800 hover:bg-gray-300"
+                className="text-sm text-gray-800 hover:bg-gray-300 print:text-[10px] print:font-thin"
               >
                 <td className="px-6 py-2 whitespace-nowrap">{item.itemName}</td>
                 <td className="px-6 py-2 whitespace-nowrap">{item.itemSKU}</td>

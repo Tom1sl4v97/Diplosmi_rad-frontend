@@ -25,7 +25,7 @@ function OneOrder(props) {
     console.log("cancel order");
 
     try {
-      const url = serverURL + "/order/cancelOrder";
+      const url = serverURL + "/order/updateOrderStatus";
       const userOrderID = order.orderID;
       const tokenKey = userData.tokenKey;
 
@@ -33,6 +33,7 @@ function OneOrder(props) {
         method: "PUT",
         body: JSON.stringify({
           orderID: userOrderID,
+          status: "canceled",
         }),
         headers: {
           "Content-Type": "application/json",
